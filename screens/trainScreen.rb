@@ -1,7 +1,8 @@
 require_relative "screen"
 
-class TrainScreen
-  def initialize()
+class TrainScreen < Screen
+  def initialize(reachable_target)
+    super(reachable_target)
   end
 
   def query_action   

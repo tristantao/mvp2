@@ -2,7 +2,8 @@ require_relative "screen"
 
 class MainScreen < Screen
 
-  def initialize()
+  def initialize(reachable_target)
+    super(reachable_target)
   end
 
   def query_action   
@@ -11,4 +12,5 @@ class MainScreen < Screen
   def completion_badge
     return "mainScreenBadge"
   end
+  
 end

@@ -7,44 +7,45 @@ require 'test/unit'
 #require 'byebug'
 
 class TestBadge < Test::Unit::TestCase
-
   def setup
-    @main_screen = MainScreen.new()
-    @tools_screen = ToolsScreen.new()
-    @data_screen = DataScreen.new()
-    @train_screen = TrainScreen.new()
-    @train_manip_data_screen = TrainManipDataScreen.new()
-    @train_viz_data_screen = TrainVizDataScreen.new()
-    @train_view_data_screen = TrainViewDataScreen.new()
-    @test_screen = TestScreen.new()
+    @main_screen = MainScreen.new([])
+    @tools_screen = ToolsScreen.new([])
+    @data_screen = DataScreen.new([])
+    @train_screen = TrainScreen.new([])
+    @train_manip_data_screen = TrainManipDataScreen.new([])
+    @train_viz_data_screen = TrainVizDataScreen.new([])
+    @train_view_data_screen = TrainViewDataScreen.new([])
+    @test_screen = TestScreen.new([])
   end
-
   def test_main_badge
     badge = @main_screen.completion_badge
     assert_equal(badge, "mainScreenBadge")
   end
-    
   def test_tools_screen
     badge = @tools_screen.completion_badge
-    assert_equal(badge, "toolsScreenBadge") 
+    assert_equal(badge, "toolsScreenBadge")  
+  end
+end
+
+class TestBasic < Test::Unit::TestCase
+  def setup
+    @main_screen = MainScreen.new([])
+    @tools_screen = ToolsScreen.new([@main_screen])
+  end
+  def test_simple_reachable
+    assert_equal(1, @tools_screen.options.length)
+    assert_equal(0, @main_screen.options.length)
+  end
+  def test_simple_reachable_2
+    @main_screen.add_reachable_target(@tools_screen)
+    assert_equal(1, @main_screen.options.length)
+  end
+end
+
+class TestFullInsta < Test::Unit::TestCase
+  def setup
   end
 
-=begin
-  def test_cards
-    #test that the content of the deck is equivalent to a full deck
-    a = Deck.instance
-    a_deck_1 = a.new_shuffled_deck(1)
-    value_hash_received = Hash.new(0)
-    for card in a_deck_1
-      value_hash_received[Card.evaluate([card])] = value_hash_received[Card.evaluate([card])] + 1
-    end
-    for answer_check in 2..9
-      #check that each number appears 4 times
-      assert_equal(4, value_hash_received[answer_check])
-    end
-    #check that there are 20 10's.
-    assert_equal(16, value_hash_received[10])
-    assert_equal(4, value_hash_received[11])
-  end
-=end
+
+
 end

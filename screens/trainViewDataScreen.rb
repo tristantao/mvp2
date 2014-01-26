@@ -2,7 +2,8 @@ require_relative "screen"
 require_relative "actionScreen"
 
 class TrainViewDataScreen < ActionScreen
-  def initialize()
+  def initialize(reachable_target)
+    super(reachable_target)
   end
 
   def query_action   

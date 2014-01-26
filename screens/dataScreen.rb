@@ -1,7 +1,8 @@
 require_relative "screen"
 
 class DataScreen < Screen
-  def initialize()
+  def initialize(reachable_target)
+    super(reachable_target) 
   end
 
   def query_action   

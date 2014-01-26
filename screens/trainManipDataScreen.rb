@@ -2,7 +2,8 @@ require_relative "screen"
 require_relative "actionScreen"
 
 class TrainManipDataScreen < ActionScreen
-  def initialize()
+  def initialize(reachable_target)
+    super(reachable_target)
   end
 
   def query_action   
@@ -10,5 +11,9 @@ class TrainManipDataScreen < ActionScreen
 
   def completion_badge
     return "trainManipDataScreenBadge"
+  end
+
+  def payload
+      return "manipluate this biatchhh!"
   end
 end

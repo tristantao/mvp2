@@ -2,8 +2,8 @@ require_relative "screen"
 
 class ActionScreen < Screen
 
-    def initialize()
-        super()
+    def initialize(reachable_target)
+        super(reachable_target)
     end
 
     def do
