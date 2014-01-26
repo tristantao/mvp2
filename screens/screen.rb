@@ -1,5 +1,7 @@
+#This class is intended as the abstract class that all screens (including actionScreen) will inherit.
+
 class Screen
-#    attr_accessor :do
+	@reachable_target = nil
 
     def initialize(reachable_target)
     	if reachable_target.length == 0
@@ -9,9 +11,14 @@ class Screen
     end
 
     def do
-        raise "do() must be overwritten!"
+        raise "Screen.do() must be overwritten!"
     end 
 
+    def options
+    	if @reachable_target == nil
+	    	raise "No reachable_target!"
+		end	
+	end
     def completion_badge
     	raise "A screen must have a completion badge!"
     end

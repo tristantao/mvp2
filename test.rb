@@ -30,17 +30,6 @@ class TestBadge < Test::Unit::TestCase
   end
 
 =begin
-  def test_deck_size
-    #tests that 52 cards are instantiated
-    a = Deck.instance
-    a_deck_1 = a.new_shuffled_deck(1).length
-    a_deck_2 = a.new_shuffled_deck(2).length
-    assert_equal(52, a_deck_1)
-    assert_equal(104, a_deck_2)
-    b = Deck.instance
-    assert_equal(52, b.new_shuffled_deck(1).length)
-  end
-
   def test_cards
     #test that the content of the deck is equivalent to a full deck
     a = Deck.instance

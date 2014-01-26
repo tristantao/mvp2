@@ -11,4 +11,8 @@ class TrainViewDataScreen < ActionScreen
   def completion_badge
     return "trainViewDataScreenBadge"
   end
+
+  def payload()
+    return "edit(trainData)"
+  end
 end
