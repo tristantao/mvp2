@@ -13,10 +13,11 @@ tools_screen = ToolsScreen.new()
 
 data_screen = DataScreen.new()
 train_screen = TrainScreen.new()
-
+train_manip_data_screen = TrainManipDataScreen.new()
+train_viz_data_screen = TrainVizDataScreen.new()
+train_view_data_screen = TrainViewDataScreen.new()
 
 test_screen = TestScreen.new()
-
 
 
 main_player = Player.new(main_screen)

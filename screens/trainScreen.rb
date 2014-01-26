@@ -1,7 +1,7 @@
 require_relative "screen"
 
 class TrainScreen
-  def instantiate()
+  def initialize()
   end
 
   def query_action   

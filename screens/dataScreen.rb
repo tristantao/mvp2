@@ -1,7 +1,7 @@
 require_relative "screen"
 
-class DataScreen
-  def instantiate()
+class DataScreen < Screen
+  def initialize()
   end
 
   def query_action   

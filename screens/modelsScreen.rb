@@ -1,7 +1,7 @@
 require_relative "screen"
 
-class ModelScreen
-  def instantiate()
+class ModelScreen < Screen
+  def initialize()
   end
 
   def query_action   

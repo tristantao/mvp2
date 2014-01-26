@@ -1,5 +1,5 @@
 class Screen
-    attr_accessor :do
+#    attr_accessor :do
     def initialize()
         raise "Can't instantiate abstract class!"
     end

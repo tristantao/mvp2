@@ -1,7 +1,7 @@
 require_relative "screen"
 
-class TestScreen
-  def instantiate()
+class TestScreen < Screen
+  def initialize()
   end
 
   def query_action   
