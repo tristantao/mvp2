@@ -14,6 +14,7 @@ class Player
   def do
     new_screen = @current_screen.query_action()
     @completion_state << @current_screen.completion_badge
+    @current_screen = new_screen
     return true
   end
 end

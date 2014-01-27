@@ -57,7 +57,8 @@ class Screen
           puts "Option must be one of the shown indexes! "
         end
       end
-      return player_choice
+      temp_array = @reachable_target.to_a
+      return  temp_array[player_choice]
     end 
     
     def print_options
