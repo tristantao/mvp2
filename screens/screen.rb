@@ -40,12 +40,13 @@ class Screen
     def query_action 
         while true
             puts "You're current in the %s screen, and here are your options" % @name
+            option = gets.chomp
         end
         return nil
     end 
 
-    def print_acions
-
+    def print_options
+        self.options.each_with_index {|val, index| puts "#{index} => #{val}" }
     end
 
     def completion_badge
