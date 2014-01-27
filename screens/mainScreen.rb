@@ -6,9 +6,6 @@ class MainScreen < Screen
     super(reachable_target, name, points)
   end
 
-  def query_action
-  end
-
   def completion_badge
     return "mainScreenBadge"
   end
