@@ -5,10 +5,7 @@ class TrainViewDataScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
   end
-  def do
-    puts "You're now at the \"View Training Data\" screen!"
-    super()
-  end
+
   def completion_badge
     return "trainViewDataScreenBadge"
   end

@@ -35,7 +35,7 @@ PLAYERS_LIST = [main_player]
 
 while true
   for person in PLAYERS_LIST
-  	puts "main loop"
+  	#puts "main loop"
     person.do()
   end
 end
