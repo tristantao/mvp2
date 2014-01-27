@@ -13,8 +13,12 @@ class Player
 
   def do
     while true #query for action
-      @current_screen.query_action()
-      @completion_state << @current_screen.completion_badge
+      action_talen = @current_screen.query_action()
+      if action_taken #success!
+        @completion_state << @current_screen.completion_badge
+        break
+      end    
     end
+    return true
   end
 end
