@@ -52,6 +52,8 @@ class ActionScreen < Screen
         print "complete!"
         sleep(rand*1.5)
         puts "\nRead and apply the following code to apply the appropriate function:"
+        sleep(rand*1.5)
+
         puts "+" * 25
         puts ""
         self.payload

@@ -33,6 +33,7 @@ main_screen = MainScreen.new([data_screen, models_screen, tools_screen], "Main S
 main_player = Player.new(main_screen)
 PLAYERS_LIST = [main_player]
 
+puts "Starting Tutorial:"
 while true
   for person in PLAYERS_LIST
   	# => puts "main loop"

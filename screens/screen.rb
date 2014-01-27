@@ -18,7 +18,7 @@ class Screen
         #The Do() function for most screens will involve printing an explanation/intro to each screen.
         #This function is overwritten for actionScreens, which will also drop payloads
         #raise "Screen.do() must be overwritten!"
-        print "\n%s:\n" % self.name
+        print "\n>>>>>>%s<<<<<<\n" % self.name
     end
 
     def add_reachable_target (target)
@@ -65,15 +65,16 @@ class Screen
       end
       temp_array = @reachable_target.to_a
       return  temp_array[player_choice]
-    end 
-    
+    end
+
     def print_options
-        puts "You can always enter \"back\" to return to last screen!"
+        puts '-' * 30
+        puts "back => Go back one screen"
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
     end
 
     def notify(msg)
-        puts "Tutorial: %s\n" % msg
+        puts "\n=> INFO: %s\n" % msg
     end
     def completion_badge
     	raise "A screen must have a completion badge!"

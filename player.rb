@@ -24,7 +24,7 @@ class Player
       @completion_state << @current_screen.completion_badge
       @current_screen = new_screen
    end
-   new_screen.enter_screen_action() #printing screen info/payload happens here
+   @current_screen.enter_screen_action() #printing screen info/payload happens here
    return true
   end
 end
