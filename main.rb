@@ -17,14 +17,15 @@ train_screen = TrainScreen.new([train_view_data_screen, train_viz_data_screen, t
 test_screen = TestScreen.new([], "Test Data Screen", 0) #TODO
 
 
-data_screen = DataScreen.new([train_screen, test_screen]m "Data Scren")
+data_screen = DataScreen.new([train_screen, test_screen], "Data Screen", 0)
 
 
 #Do tools update here
 tools_screen = ToolsScreen.new([], "Tools Screen", 0) #TODO
 
+models_screen = ModelsScreen.new([], "Models Screen", 0)
 
-main_screen = MainScreen.new([data_screen, tools_screen], "Main Screen")
+main_screen = MainScreen.new([data_screen, models_screen, tools_screen], "Main Screen")
 
 
 
