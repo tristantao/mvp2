@@ -12,7 +12,7 @@ class ActionScreen < Screen
         super()
     end
 
-    def payload()
+    def payload
     	raise "ActionScreen must have a valid payload"
     end
 

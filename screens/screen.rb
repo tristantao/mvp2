@@ -36,6 +36,18 @@ class Screen
             return @reachable_target
         end
 	end
+
+    def query_action 
+        while true
+            puts "You're current in the %s screen, and here are your options" % @name
+        end
+        return nil
+    end 
+
+    def print_acions
+
+    end
+
     def completion_badge
     	raise "A screen must have a completion badge!"
     end
