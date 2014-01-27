@@ -2,11 +2,16 @@
 require 'set'
 
 class Screen
-    attr_accessor :reachable_target
-	@reachable_target = nil
+    attr_accessor :name
 
-    def initialize(reachable_target)
+	@reachable_target = nil
+    @name = "Screen"
+    @points = 0
+
+    def initialize(reachable_target, name, points)
         @reachable_target = Set.new(reachable_target)
+        @name = name
+        @points = points
     end
 
     def do
