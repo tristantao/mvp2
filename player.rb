@@ -14,10 +14,9 @@ class Player
 
   def initialize(screen)
     @current_screen = screen
-    @last_screen = screen
     @main_screen = screen
     @completion_state = Set.new
-    @KEY_TO_SCREEN = {"main" => @main_screen, "back" => @last_screen}
+    @KEY_TO_SCREEN = {"main" => @main_screen, "back" => screen}
   end
 
   def do
@@ -28,7 +27,7 @@ class Player
       @current_screen = @KEY_TO_SCREEN[new_screen]
       @last_screen = temp_screen
     else #just a screen
-      @last_screen = @current_screen
+      @KEY_TO_SCREEN['back'] = @current_screen 
       @completion_state << @current_screen.completion_badge
       @current_screen = new_screen
    end
