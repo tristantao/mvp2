@@ -13,4 +13,9 @@ class ActionScreen < Screen
     def payload()
     	raise "ActionScreen must have a valid payload"
     end
-end 
+
+    def completion_badge
+    	return "actionScreenBadge"
+    end
+    
+end
