@@ -38,14 +38,28 @@ class Screen
 	end
 
     def query_action 
-        while true
-            puts "You're current in the \"%s\", and here are your options" % @name
-            self.print_options
-            option = gets.chomp
+        #Queries player for where the next screen is
+        #@returns the index of the reachable_target that the player wants to go next
+      while true
+        print "=" * 30
+        puts "\nYou're current in the \"%s\", and here are your options, please shoose the desired index" % @name
+        self.print_options
+        begin
+          raw_player_option = gets.chomp
+          player_choice = Integer(raw_player_option)
+        rescue ArgumentError => e
+          puts "Options be in integers, please re-enter!"
+          next
         end
-        return nil
+        if player_choice >= 0 and player_choice < @reachable_target.length
+          break
+        else
+          puts "Option must be one of the shown indexes! "
+        end
+      end
+      return player_choice
     end 
-
+    
     def print_options
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
     end
