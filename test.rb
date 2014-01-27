@@ -8,16 +8,16 @@ require 'test/unit'
 
 class TestBadge < Test::Unit::TestCase
   def setup
-    @main_screen = MainScreen.new([])
-    @action_screen = ActionScreen.new([])
-    @tools_screen = ToolsScreen.new([])
-    @data_screen = DataScreen.new([])
-    @train_screen = TrainScreen.new([])
-    @models_screen = ModelsScreen.new([])
-    @train_manip_data_screen = TrainManipDataScreen.new([])
-    @train_viz_data_screen = TrainVizDataScreen.new([])
-    @train_view_data_screen = TrainViewDataScreen.new([])
-    @test_screen = TestScreen.new([])
+    @main_screen = MainScreen.new([],"", 0)
+    @action_screen = ActionScreen.new([], "", 0)
+    @tools_screen = ToolsScreen.new([], "", 0)
+    @data_screen = DataScreen.new([], "", 0)
+    @train_screen = TrainScreen.new([], "", 0)
+    @models_screen = ModelsScreen.new([], "", 0)
+    @train_manip_data_screen = TrainManipDataScreen.new([], "", 0)
+    @train_viz_data_screen = TrainVizDataScreen.new([], "", 0)
+    @train_view_data_screen = TrainViewDataScreen.new([], "", 0)
+    @test_screen = TestScreen.new([], "", 0)
   end
   def test_main_badge
     badge = @main_screen.completion_badge
@@ -39,14 +39,32 @@ class TestBadge < Test::Unit::TestCase
     badge = @models_screen.completion_badge
     assert_equal(badge, "modelsScreenBadge")
   end
-  def 
+  def test_test_badge
+    badge = @test_screen.completion_badge
+    assert_equal(badge, "testScreenBadge")
+  end
+
+  def test_trainManipDataScreen_badge
+    badge = @train_manip_data_screen.completion_badge
+    assert_equal(badge, "trainManipDataScreenBadge")
+  end
+  def test_trainViewDataScreen_badge
+    badge = @train_view_data_screen.completion_badge
+    assert_equal(badge, "trainViewDataScreenBadge")
+  end
+  def test_trainVizDataScreen_badge
+    badge = @train_viz_data_screen.completion_badge
+    assert_equal(badge, "trainVizDataScreenBadge")
+  end
+  
+
 
 end
 
 class TestBasic < Test::Unit::TestCase
   def setup
-    @main_screen = MainScreen.new([])
-    @tools_screen = ToolsScreen.new([@main_screen])
+    @main_screen = MainScreen.new([], "", 0)
+    @tools_screen = ToolsScreen.new([@main_screen], "", 0)
   end
   def test_simple_reachable
     assert_equal(1, @tools_screen.options.length)
