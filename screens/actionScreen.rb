@@ -16,14 +16,15 @@ class ActionScreen < Screen
     	return "actionScreenBadge"
     end
 
-    def query_action
+    def query_action (player)
         while true
-            print "=" * 30
+            print_double_break
             puts "\nYou're current in the \"%s\", enter action \"action\" to do the action." % @name
             self.print_options
             raw_player_option = gets.chomp
-            if raw_player_option == "back"
-                return "last_screen"
+            #byebug
+            if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
+                return raw_player_option
             elsif raw_player_option == "action"
                 self.deliver_payload
                 return self
@@ -59,6 +60,8 @@ class ActionScreen < Screen
         self.payload
         puts ""
         puts "+" * 25
+        puts "Press Enter when Done:"
+        gets.chomp
     end
 
     def payload
