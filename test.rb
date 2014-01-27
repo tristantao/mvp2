@@ -44,6 +44,19 @@ class TestBadge < Test::Unit::TestCase
     assert_equal(badge, "testScreenBadge")
   end
 
+  def test_trainManipDataScreen_badge
+    badge = @train_manip_data_screen.completion_badge
+    assert_equal(badge, "trainManipDataScreenBadge")
+  end
+  def test_trainViewDataScreen_badge
+    badge = @train_view_data_screen.completion_badge
+    assert_equal(badge, "trainViewDataScreenBadge")
+  end
+  def test_trainVizDataScreen_badge
+    badge = @train_viz_data_screen.completion_badge
+    assert_equal(badge, "trainVizDataScreenBadge")
+  end
+  
 
 
 end
