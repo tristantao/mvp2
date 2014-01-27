@@ -15,7 +15,10 @@ class Screen
     end
 
     def do
-        raise "Screen.do() must be overwritten!"
+        #The Do() function for most screens will involve printing an explanation/intro to each screen.
+        #This function is overwritten for actionScreens, which will also drop payloads
+        #raise "Screen.do() must be overwritten!"
+        print "You're at the %s screen!" % self.name
     end
 
     def add_reachable_target (target)
@@ -42,10 +45,13 @@ class Screen
         #@returns the index of the reachable_target that the player wants to go next
       while true
         print "=" * 30
-        puts "\nYou're current in the \"%s\", and here are your options, please shoose the desired index" % @name
+        puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
         self.print_options
         begin
           raw_player_option = gets.chomp
+          if raw_player_option == "back"
+            return "last_screen"
+          end
           player_choice = Integer(raw_player_option)
         rescue ArgumentError => e
           puts "Options be in integers, please re-enter!"
@@ -62,6 +68,7 @@ class Screen
     end 
     
     def print_options
+        puts "You can always enter \"back\" to return to last screen!a"
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
     end
 

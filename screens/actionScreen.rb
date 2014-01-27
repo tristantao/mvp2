@@ -8,8 +8,13 @@ class ActionScreen < Screen
         @action_methods = Set.new
     end
 
-    def do #Here, 
-        super()
+    def do
+        puts "\nRead and apply the following code to apply the appropriate function:"
+        puts "+" * 25
+        puts ""
+        self.payload
+        puts ""
+        puts "+" * 25
     end
 
     def payload
@@ -18,6 +23,10 @@ class ActionScreen < Screen
 
     def completion_badge
     	return "actionScreenBadge"
+    end
+
+    def query_action
+        
     end
     
 end
