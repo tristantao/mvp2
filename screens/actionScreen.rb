@@ -44,23 +44,28 @@ class ActionScreen < Screen
     end
 
     def deliver_payload
-        print "loading instructions."
+        print "loading instructions.".red
         sleep (rand*1.5)
-        print "."
+        print ".".yellow
+        sleep (rand/3)
+        print ".".yellow
+        sleep (rand/3)
+        print ".".yellow
+        sleep (rand/2)
+        print ".".yellow
+        sleep (rand/2)
+        print ".".yellow
         sleep (0.75)
-        print "."
-        sleep (0.75)
-        print "complete!"
+        print "complete!".green
         sleep(rand*1.5)
         puts "\nRead and apply the following code to apply the appropriate function:"
         sleep(rand*1.5)
-
-        puts "+" * 25
-        puts ""
+        print_plus_break
+        print "\n\n"
         self.payload
-        puts ""
-        puts "+" * 25
-        puts "Press Enter when Done:"
+        print "\n"
+        print_plus_break
+        puts "\nPress Enter when Done:"
         gets.chomp
     end
 

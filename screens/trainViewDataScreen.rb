@@ -12,6 +12,6 @@ class TrainViewDataScreen < ActionScreen
 
   def payload()
     puts "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:"
-    puts "edit(trainData) \n"
+    puts "edit(trainData)"
   end
 end

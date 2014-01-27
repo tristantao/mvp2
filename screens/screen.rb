@@ -85,10 +85,13 @@ class Screen
     def print_double_break
         print "=".yellow * 30
     end
-
     def print_single_break
         print "-".yellow * 30
     end
+    def print_plus_break
+        print "+".yellow * 25
+    end
+
     def completion_badge
     	raise "A screen must have a completion badge!"
     end
