@@ -36,6 +36,20 @@ class Screen
             return @reachable_target
         end
 	end
+
+    def query_action 
+        while true
+            puts "You're current in the \"%s\", and here are your options" % @name
+            self.print_options
+            option = gets.chomp
+        end
+        return nil
+    end 
+
+    def print_options
+        self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
+    end
+
     def completion_badge
     	raise "A screen must have a completion badge!"
     end
