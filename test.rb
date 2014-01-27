@@ -9,9 +9,11 @@ require 'test/unit'
 class TestBadge < Test::Unit::TestCase
   def setup
     @main_screen = MainScreen.new([])
+    @action_screen = ActionScreen.new([])
     @tools_screen = ToolsScreen.new([])
     @data_screen = DataScreen.new([])
     @train_screen = TrainScreen.new([])
+    @models_screen = ModelsScreen.new([])
     @train_manip_data_screen = TrainManipDataScreen.new([])
     @train_viz_data_screen = TrainVizDataScreen.new([])
     @train_view_data_screen = TrainViewDataScreen.new([])
@@ -21,10 +23,24 @@ class TestBadge < Test::Unit::TestCase
     badge = @main_screen.completion_badge
     assert_equal(badge, "mainScreenBadge")
   end
-  def test_tools_screen
+  def test_tools_badge
     badge = @tools_screen.completion_badge
-    assert_equal(badge, "toolsScreenBadge")  
+    assert_equal(badge, "toolsScreenBadge")
   end
+  def test_action_badge
+    badge = @action_screen.completion_badge
+    assert_equal(badge, "actionScreenBadge")
+  end
+  def test_data_badge
+    badge = @data_screen.completion_badge
+    assert_equal(badge, "dataScreenBadge")
+  end
+  def test_models_badge
+    badge = @models_screen.completion_badge
+    assert_equal(badge, "modelsScreenBadge")
+  end
+  def 
+
 end
 
 class TestBasic < Test::Unit::TestCase
