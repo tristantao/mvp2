@@ -14,7 +14,7 @@ class Screen
         @points = points
     end
 
-    def do
+    def enter_screen_action
         #The Do() function for most screens will involve printing an explanation/intro to each screen.
         #This function is overwritten for actionScreens, which will also drop payloads
         #raise "Screen.do() must be overwritten!"
@@ -54,13 +54,13 @@ class Screen
           end
           player_choice = Integer(raw_player_option)
         rescue ArgumentError => e
-          puts "Options be in integers, please re-enter!"
+          notify "Options be in integers, please re-enter!"
           next
         end
         if player_choice >= 0 and player_choice < @reachable_target.length
           break
         else
-          puts "Option must be one of the shown indexes! "
+          notify "Option must be one of the shown indexes! "
         end
       end
       temp_array = @reachable_target.to_a
@@ -72,6 +72,9 @@ class Screen
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
     end
 
+    def notify(msg)
+        puts "Tutorial: %s\n" % msg
+    end
     def completion_badge
     	raise "A screen must have a completion badge!"
     end
