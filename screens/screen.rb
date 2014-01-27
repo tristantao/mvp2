@@ -19,7 +19,7 @@ class Screen
         #The Do() function for most screens will involve printing an explanation/intro to each screen.
         #This function is overwritten for actionScreens, which will also drop payloads
         #raise "Screen.do() must be overwritten!"
-        print "\n>>>>>>%s<<<<<<\n" % self.name
+        print "\n>>>>>>%s<<<<<<\n".green % self.name
     end
 
     def add_reachable_target (target)
@@ -41,17 +41,18 @@ class Screen
         end
 	end
 
-    def query_action 
+    def query_action (player)
         #Queries player for where the next screen is
         #@returns the index of the reachable_target that the player wants to go next
       while true
-        print "=" * 30
+        print_double_break
         puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
         self.print_options
         begin
           raw_player_option = gets.chomp
-          if raw_player_option == "back"
-            return "last_screen"
+          #byebug
+          if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
+            return raw_player_option
           end
           player_choice = Integer(raw_player_option)
         rescue ArgumentError => e
@@ -69,14 +70,24 @@ class Screen
     end
 
     def print_options
-        puts '-' * 30
+        print_single_break
+        print "\n"
         puts "back => Go back one screen"
+        puts "main => Go back to main screen"
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
-        print "Your Input: "
+        print "Your Input: ".magenta
     end
 
     def notify(msg)
-        puts "\n=> INFO: %s".red % msg
+        print "\n=> INFO: %s\n".red % msg
+    end
+
+    def print_double_break
+        print "=".yellow * 30
+    end
+
+    def print_single_break
+        print "-".yellow * 30
     end
     def completion_badge
     	raise "A screen must have a completion badge!"
