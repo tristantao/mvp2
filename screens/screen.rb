@@ -1,5 +1,6 @@
 #This class is intended as the abstract class that all screens (including actionScreen) will inherit.
 require 'set'
+require 'colorize'
 
 class Screen
     attr_accessor :name
@@ -54,13 +55,13 @@ class Screen
           end
           player_choice = Integer(raw_player_option)
         rescue ArgumentError => e
-          notify "Options be in integers, please re-enter!"
+          notify "Option must be in integers, please re-enter!"
           next
         end
         if player_choice >= 0 and player_choice < @reachable_target.length
           break
         else
-          notify "Option must be one of the shown indexes! "
+          notify "Option must be one of the shown indexes/commands! "
         end
       end
       temp_array = @reachable_target.to_a
@@ -71,10 +72,11 @@ class Screen
         puts '-' * 30
         puts "back => Go back one screen"
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
+        print "Your Input: "
     end
 
     def notify(msg)
-        puts "\n=> INFO: %s\n" % msg
+        puts "\n=> INFO: %s".red % msg
     end
     def completion_badge
     	raise "A screen must have a completion badge!"
