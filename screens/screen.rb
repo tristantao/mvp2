@@ -39,4 +39,4 @@ class Screen
     def completion_badge
     	raise "A screen must have a completion badge!"
     end
-end 
+end

@@ -56,7 +56,7 @@ class TestBadge < Test::Unit::TestCase
     badge = @train_viz_data_screen.completion_badge
     assert_equal(badge, "trainVizDataScreenBadge")
   end
-  
+
 
 
 end
