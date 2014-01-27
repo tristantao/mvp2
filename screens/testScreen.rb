@@ -5,7 +5,7 @@ class TestScreen < Screen
     super(reachable_target)
   end
 
-  def query_action   
+  def query_action
   end
 
   def completion_badge

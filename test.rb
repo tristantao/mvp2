@@ -39,7 +39,12 @@ class TestBadge < Test::Unit::TestCase
     badge = @models_screen.completion_badge
     assert_equal(badge, "modelsScreenBadge")
   end
-  def 
+  def test_test_badge
+    badge = @test_screen.completion_badge
+    assert_equal(badge, "testScrenBadge")
+  end
+  
+
 
 end
 
