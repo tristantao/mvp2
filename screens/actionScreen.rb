@@ -29,12 +29,10 @@ class ActionScreen < Screen
             elsif raw_player_option == "action"
                 self.deliver_payload
                 return self
-            elsif raw_player_option == "XXX"
-                abort ("XXX operation")
             else
                 notify("Please enter a valid option!")
                 next  
-                end           
+            end           
           end
         return self
     end
