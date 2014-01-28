@@ -49,7 +49,8 @@ class Screen
         puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
         self.print_options
         begin
-          raw_player_option = gets.chomp
+          raw_player_option = gets.chomp.strip
+          raw_player_option.strip!
           #byebug
           if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
             return raw_player_option

@@ -22,6 +22,7 @@ class ActionScreen < Screen
             puts "\nYou're current in the \"%s\", enter action \"action\" to do the action." % @name
             self.print_options
             raw_player_option = gets.chomp
+            raw_player_option.strip!
             #byebug
             if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
                 return raw_player_option
