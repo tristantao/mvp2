@@ -45,7 +45,7 @@ class ActionScreen < Screen
         puts "main => Go back to main screen"
         #print_single_break
         #print "\n"
-        @payload_hash.each {|key, val| puts "[#{key}] => %s " % val[0].snippet}
+        @payload_hash.each {|key, val| puts "[#{key}] => %s " % val[0].description}
         print "Your Input: ".magenta
     end
 
