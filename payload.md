@@ -170,6 +170,53 @@ for(i in 1:nrow(trainData)) {
 ```
 That's all the variables we could think of!
 
+<h5>MainScreen -> Data -> Test</h5>
+You have the following options to work with the Test data:
+
+<h5>MainScreen -> Data -> Test -> View</h5>
+Here are the commands you can use to view the data:
+```R
+head(testData)
+tail(testData)
+testdata
+```
+<h5>MainScreen -> Data -> Test -> Visualize</h5>
+######Must have Train visualize completed (Whoa there, lets do Train first, then Test)
+Visualizations of the Test data is also important, mostly to make sure there isn't any funny business going on! You want to make sure that the Train and Test data are similar so that the model you fit using the Train data applies to the data you have given in the Test data.
+
+<h5>MainScreen -> Data -> Test -> Visualize -> Density&PieChart</h5>
+Here we will teach you how to make another visualization, the pie chart.
+```R
+pie(table(trainData$Pclass)/length(trainData$Pclass), main = "Train Data: % of each Pclass")
+pie(table(testData$Pclass)/length(testData$Pclass), main = "Test Data: % of each Pclass")
+```
+We also check the density for the Age column to make sure its similar to the Train data
+```R
+plot(density(trainData$Age, na.rm = TRUE), main ="Train Density")
+plot(density(testData$Age,na.rm = T), main = "Test Density")
+```
+Everything should look good!
+
+<h5>MainScreen -> Data -> Test -> Manipulate</h5>
+Same deal as manipulating the Train data. We must clean up the Test dataset so that our model works and add variables to strengthen our model.
+
+<h5>MainScreen -> Data -> Test -> Manipulate -> Cleaning</h5>
+Same deal as the Train data. We remove columns we don't use in our analysis, making inferences on the missing age values, and make dummy variables for the Sex column.
+```R
+testData <- testData[-c(1, 8:11)]
+testData$Sex <- gsub("female", 1, testData$Sex)
+testData$Sex <- gsub("^male", 0, testData$Sex)
+test_mean_age <- mean(testData$Age, na.rm= T)
+for (i in 1:nrow(testData)) {
+  if (is.na(testData[i,4])) {
+    testData[i, 4] <- test_mean_age
+  }
+}
+```
+
+
+
+
 
 
 
