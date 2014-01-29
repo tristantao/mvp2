@@ -246,6 +246,18 @@ for(i in 1:nrow(testData)) {
 ```
 Finite!
 
+<h5>MainScreen -> Tools</h5>
+Welcome to the Tools Screen. There are tons of machine learning tools that can be applied to this data project but we will teach only two.
+
+<h5>MainScreen -> Tools -> ClassificationTrees</h5>
+Classification trees. Choose to learn the theory and concepts or if your already familiar you can apply it to our data project.
+
+<h5>MainScreen -> Tools -> ClassificationTrees -> Wiki</h5>
+Classification Trees is a popular predictive modeling approach in machine learning and data mining because of its simplicity. It is also easy to visualize the result and express the decisions made. 
+
+The biggest advantage of classification trees is that there is very little preparation that must be done to the data. Other techniques require categorical variables to be converted and missing values inferenced. Classification trees are also effective on large data sets.
+
+The biggest disadvantage of classification trees is the problem of overfitting. Mechanisms to avoid this must be applied so that overfitting does not occur.
 
 
 
