@@ -130,7 +130,7 @@ trainData <- trainData[-c(1,9:12)]
 Now our Train dataset is clean! Go forth and do analysis
 
 <h5>MainScreen -> Data -> Train -> Manipulate -> AddingVar</h5>
-######Must have applied GLM or Random Forest first! (Whoa there, you want to add variables to what?)
+######Must have applied GLM or Random Forest first AND variables added to Test! (Whoa there, you want to add variables to what?)
 By creating new variables we may be able to predict the survival of the passengers even more closely. This tutorial specifically includes three variables which we found improved our model the most. But you can probably brainstorm better ones if you wanted.
 <br>
 <br>
@@ -214,7 +214,37 @@ for (i in 1:nrow(testData)) {
 }
 ```
 
+<h5>MainScreen -> Data -> Test -> Manipulate -> AddingVar</h5>
+######Must have applied GLM or Random Forest First AND variables must be applied in Train (Whoa there, what do you want to add variables too? Also are you sure you've done this for the Train data as well?)
+We've already given you the variables we brainstormed but try to do a few yourself. Just remember to add the variables to BOTH of the datasets! Here's the code for the Test data variables.
+```R
+testData["Child"] <- NA
 
+for (i in 1:nrow(testData)) {
+  if (testData[i, 4] <= 12) {
+    testData[i, 7] <- 1
+  } else {
+    testData[i, 7] <- 2
+  }
+}
+
+testData["Family"] <- NA
+
+for(i in 1:nrow(testData)) {
+  testData[i, 8] <- testData[i, 5] + testData[i, 6] + 1
+}
+
+testData["Mother"] <- NA
+
+for(i in 1:nrow(testData)) {
+  if(testData[i, 2] == "Mrs" & testData[i, 6] > 0) {
+    testData[i, 9] <- 1
+  } else {
+    testData[i, 9] <- 2
+  }
+}
+```
+Finite!
 
 
 
