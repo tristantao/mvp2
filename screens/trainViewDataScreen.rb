@@ -2,6 +2,9 @@ require_relative "screen"
 require_relative "actionScreen"
 
 class TrainViewDataScreen < ActionScreen
+
+  @payload_list = []
+
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
   end
