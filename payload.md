@@ -35,16 +35,12 @@ setwd("/Users/your_user_name/Desktop/kaggle/")
 trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
 testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
-<br>
-<br>
 For Windows users write the following:
 ```R
 setwd("C://Users//Folder//Folder//CurrentFolder//")
 trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
 testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
-<br>
-<br>
 Which one should you look at first?
 
 <h5>MainScreen -> Data -> Train</h5>
@@ -58,6 +54,7 @@ function to see the first six rows and all the columns of the data.
 ```R
 head(trainData)
 ```
+You can also just input ```trainData``` to print out the entire dataset.
 <br>
 <br>
 Take a moment to make sure you understand, what do each of the rows represent? What do each of the columns represent? The two confusing columns are "SibSp" and "Parch". "SibSp" is the sum of the sibilings and spouses aboard for that passenger. "Parch" is the sum of the parents and children aboard for that passenger.
@@ -77,7 +74,10 @@ By first plotting the density we're able to get a sense of how the overall data 
 plot(density(trainData$Age, na.rm = TRUE))
 plot(density(trainData$Fare, na.rm = TRUE))
 ```
-
+It doesn't hurt to just visualize the data by columns as well. You might notice something fishy...
+```R
+trainData$Age
+```
 <h5>MainScreen -> Data -> Train ->Visualize ->BarPlot</h5>
 ## Must have done density plot first (Whoa there, lets do a more general visualization first)
 Lets now look at the survival rate filtered by sex. Our intuition is that women had a higher chance of surviving because the crewman used teh standard "Women and Childre first" to board the lifeboats. We first create a table and call it counts. Then we use R's barplot() function. We also calculate the male/female survival rates from the table by indexing the table we made called counts. 
@@ -89,8 +89,6 @@ barplot(counts, xlab = "Gender", ylab = "Number of People", main = "survived and
 counts[2] / (counts[1] + counts[2])
 counts[4] / (counts[3] + counts[4])
 ```
-<br>
-<br>
 Note that in the barplot you create the lighter areas indicate survival. Doing the calculations below the barplot we see that in our Train data, 74.2% of women survived versus 18.9% of men.
 <br>
 <br>
@@ -105,11 +103,72 @@ Pclass_survival[2] / (Pclass_survival[1] + Pclass_survival[2])
 Pclass_survival[4] / (Pclass_survival[3] + Pclass_survival[4]) 
 Pclass_survival[6] / (Pclass_survival[5] + Pclass_survival[6])
 ```
-<br>
-<br>
 Thats some decent visualizations for now. Think about what else you might want to visualize? The key idea is that we're trying to determine if any/which of our variables are related to what we're trying to predict: Survived.
 
 <h5>MainScreen -> Data -> Train -> Manipulate</h5>
+## Must have viewed & visualized data (Whoa there, have you viewed and visualized the data yet?)
+Here's where we get our hands dirty. Cleaning the data involves making inferences on any missing values as well as converting the categorical variables to dummary variables. Adding variables involves creating additional variables which strengthen the predictability of our models. 
+
+<h5>MainScreen -> Data -> Train -> Manipulate -> Cleaning</h5>
+To clean the Train data we will first make inferences on any missing values in the dataset. If you enter the following: ```trainData$Age``` you will see that there are a lot of NA's meaning the age variable is missing for these observations.
+
+What we will do is simply calculate the average age of all of the passengers and use that as a proxy for any missing age variable for an observation! Then we will write a loop which checks through the Train dataset if the age value is missing, and if it is substitute the proxy value.
+```R
+mean_age <- mean(trainData$Age,na.rm=T)
+for (i in 1:nrow(trainData)) {
+  if (is.na(trainData[i,5])) {
+    trainData$Age[i] <- mean_age
+  }
+}
+```
+We also want to turn the Sex variable (male/female) into a dummy variable (0/1) so that it can be used in our model and get rid of the columns of the dataset we don't use for our analysis
+```R
+trainData$Sex <- gsub("female", 1, trainData$Sex)
+trainData$Sex <- gsub("^male", 0, trainData$Sex)
+trainData <- trainData[-c(1,9:12)]
+```
+Now our Train dataset is clean! Go forth and do analysis
+
+<h5>MainScreen -> Data -> Train -> Manipulate -> AddingVar</h5>
+##Must have applied GLM or Random Forest first! (Whoa there, you want to add variables to what?)
+By creating new variables we may be able to predict the survival of the passengers even more closely. This tutorial specifically includes three variables which we found improved our model the most. But you can probably brainstorm better ones if you wanted.
+<br>
+<br>
+This additional variable choice stems from the fact that we suspect that being a child might affect the survival rate of a passanger. We start by creating a child variable. This is done by appending an empty column to the dataset, titled "Child". We then populate the column with value "1", if the passenger is under the age of 12, and "2" otherwie.
+```R
+trainData["Child"] <- NA
+
+for (i in 1:nrow(trainData)) {
+  if (trainData$Age[i] <= 12) {
+    trainData$Child[i] <- 1
+  } else {
+    trainData$Child[i] <- 2
+  }
+}
+```
+This variable is meant to represent the family size of each passenger by adding the number of Siblings/Spouses and Parents/Children and one. Our hypothesis is that larger families were less likely to survive.
+```R
+trainData["Family"] <- NA
+
+for(i in 1:nrow(trainData)) {
+    x <- trainData$SibSp[i]
+    y <- trainData$Parch[i]
+    trainData$Family[i] <- x + y + 1
+}
+```
+We add another variable indicating whether the passenger is a mother. This is done by going through the passengers and checking to see if the title is Mrs and if the number of kids is greater than 0.
+```R
+trainData["Mother"] <- NA
+
+for(i in 1:nrow(trainData)) {
+    if(trainData$Name[i] == "Mrs" & trainData$Parch[i] > 0) {
+      trainData$Mother[i] <- 1
+    } else {
+      trainData$Mother[i] <- 2
+    }
+}
+```
+That's all the variables we could think of!
 
 
 
