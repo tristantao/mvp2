@@ -27,7 +27,9 @@ class Player
       @current_screen = @KEY_TO_SCREEN[new_screen]
       @last_screen = temp_screen
     else #just a screen
-      @KEY_TO_SCREEN['back'] = @current_screen 
+      if @KEY_TO_SCREEN['back'] != @current_screen #prevent losing "backability" when getting to the same screen 
+        @KEY_TO_SCREEN['back'] = @current_screen 
+      end 
       @completion_state << @current_screen.completion_badge
       @current_screen = new_screen
    end
