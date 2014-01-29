@@ -3,6 +3,7 @@ require_relative "screen"
 class ActionScreen < Screen
 
 	@action_methods = nil
+    @payload_list = []
     def initialize(reachable_target, name, points)
         super(reachable_target, name, points)
         @action_methods = Set.new
@@ -32,7 +33,7 @@ class ActionScreen < Screen
             else
                 notify("Please enter a valid option!")
                 next  
-            end           
+            end
           end
         return self
     end
@@ -69,7 +70,11 @@ class ActionScreen < Screen
     end
 
     def payload
-        raise "ActionScreen must have a valid payload"
+        for load in @payload_list
+            print load
+            puts "\nPress Enter when Done:"
+            gets.chomp
+        end
     end
 
     
