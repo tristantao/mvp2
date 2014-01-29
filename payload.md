@@ -63,7 +63,7 @@ Take a moment to make sure you understand, what do each of the rows represent? W
 This is all you can do in the view page! Go try something else.
 
 <h5>MainScreen -> Data -> Train -> Visualize</h5>
-###### Must have viewed data first
+###### Must have viewed data first (Whoa there, how about we just take a look at the data first?)
 Doing visualizations of the data allow you understand it better before you begin any analysis. Which one should you do first?
 
 <h5>MainScreen -> Data -> Train -> Visualize -> DensityPlot</h5>
