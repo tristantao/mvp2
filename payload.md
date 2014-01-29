@@ -63,7 +63,7 @@ Take a moment to make sure you understand, what do each of the rows represent? W
 This is all you can do in the view page! Go try something else.
 
 <h5>MainScreen -> Data -> Train -> Visualize</h5>
-## Must have viewed data first
+###### Must have viewed data first
 Doing visualizations of the data allow you understand it better before you begin any analysis. Which one should you do first?
 
 <h5>MainScreen -> Data -> Train -> Visualize -> DensityPlot</h5>
@@ -79,7 +79,7 @@ It doesn't hurt to just visualize the data by columns as well. You might notice 
 trainData$Age
 ```
 <h5>MainScreen -> Data -> Train ->Visualize ->BarPlot</h5>
-## Must have done density plot first (Whoa there, lets do a more general visualization first)
+###### Must have done density plot first (Whoa there, lets do a more general visualization first)
 Lets now look at the survival rate filtered by sex. Our intuition is that women had a higher chance of surviving because the crewman used teh standard "Women and Childre first" to board the lifeboats. We first create a table and call it counts. Then we use R's barplot() function. We also calculate the male/female survival rates from the table by indexing the table we made called counts. 
 <br>
 <br>
@@ -106,7 +106,7 @@ Pclass_survival[6] / (Pclass_survival[5] + Pclass_survival[6])
 Thats some decent visualizations for now. Think about what else you might want to visualize? The key idea is that we're trying to determine if any/which of our variables are related to what we're trying to predict: Survived.
 
 <h5>MainScreen -> Data -> Train -> Manipulate</h5>
-## Must have viewed & visualized data (Whoa there, have you viewed and visualized the data yet?)
+###### Must have viewed & visualized data (Whoa there, have you viewed and visualized the data yet?)
 Here's where we get our hands dirty. Cleaning the data involves making inferences on any missing values as well as converting the categorical variables to dummary variables. Adding variables involves creating additional variables which strengthen the predictability of our models. 
 
 <h5>MainScreen -> Data -> Train -> Manipulate -> Cleaning</h5>
@@ -130,7 +130,7 @@ trainData <- trainData[-c(1,9:12)]
 Now our Train dataset is clean! Go forth and do analysis
 
 <h5>MainScreen -> Data -> Train -> Manipulate -> AddingVar</h5>
-##Must have applied GLM or Random Forest first! (Whoa there, you want to add variables to what?)
+######Must have applied GLM or Random Forest first! (Whoa there, you want to add variables to what?)
 By creating new variables we may be able to predict the survival of the passengers even more closely. This tutorial specifically includes three variables which we found improved our model the most. But you can probably brainstorm better ones if you wanted.
 <br>
 <br>
