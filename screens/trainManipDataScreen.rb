@@ -6,12 +6,8 @@ class TrainManipDataScreen < ActionScreen
     super(reachable_target, name, points)
   end
 
-
   def completion_badge
     return "trainManipDataScreenBadge"
   end
 
-  def payload
-      return "manipluate this biatchhh!"
-  end
 end

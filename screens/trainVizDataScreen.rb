@@ -10,7 +10,4 @@ class TrainVizDataScreen < ActionScreen
     return "trainVizDataScreenBadge"
   end
 
-  def payload
-      return "train viz payload"
-  end
 end

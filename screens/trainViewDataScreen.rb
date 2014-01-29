@@ -10,8 +10,4 @@ class TrainViewDataScreen < ActionScreen
     return "trainViewDataScreenBadge"
   end
 
-  def payload()
-    puts "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:"
-    puts "edit(trainData)"
-  end
 end

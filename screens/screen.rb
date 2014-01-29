@@ -4,7 +4,6 @@ require 'colorize'
 
 class Screen
     attr_accessor :name
-
 	@reachable_target = nil
     @name = "Screen"
     @points = 0
