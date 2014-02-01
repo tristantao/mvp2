@@ -4,6 +4,7 @@ class ActionScreen < Screen
 
 	@action_methods = nil
     @payload_hash = {}
+    @payload_switch = false
     def initialize(reachable_target, name, points)
         super(reachable_target, name, points)
         @action_methods = Set.new
@@ -20,7 +21,7 @@ class ActionScreen < Screen
     def query_action (player)
         while true
             print_double_break
-            puts "\nYou're current in the \"%s\", Choose You're options from below" % @name
+            puts "\nYou're currently in the \"%s\", Choose You're options from below" % @name
             self.print_options
             raw_player_option = gets.chomp
             raw_player_option.strip!
@@ -32,7 +33,7 @@ class ActionScreen < Screen
                 return self
             else
                 notify("Please enter a valid option!")
-                next  
+                next
             end
           end
         return self
@@ -71,6 +72,9 @@ class ActionScreen < Screen
         self.payload(load_key)
         print "\n"
         print_plus_break
+        if @payload_switch
+            return
+        end
         puts "\nYou're done with this part! Press Enter to return to previous screen!:"
         gets.chomp
     end
@@ -83,10 +87,13 @@ class ActionScreen < Screen
                 puts load.content.yellow
             end
             sleep(1.5)
-            print "\n->Press Enter to continue:".red
-            gets.chomp
+            print "\n->Press Enter to continue or type home to go back to the screen you began:".red
+            user_input = gets.chomp
+            if user_input == "home"
+                @payload_switch = true
+                break
+            end
+
         end
     end
-
-    
 end

@@ -5,14 +5,21 @@ class TrainViewDataScreen < ActionScreen
 
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    view_one  = OpenStruct.new(:type => "explanation", 
+    view_one  = OpenStruct.new(:type => "explanation",
       :content => "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:",
       :description => "This is where you view and explore the data!")
+
     view_two = OpenStruct.new(:type => "code",
       :content => "edit(trainData)")
 
+    view_three = OpenStruct.new(:type => "explanation",
+      :content => "\nFUCK YOUR COUCH")
+
+    view_four = OpenStruct.new(:type => "explanation",
+      :content => "\nblah blah blah blah blah")
+
     @payload_hash = Hash.new
-    @payload_hash['view'] = [view_one, view_two]
+    @payload_hash['view'] = [view_one, view_two, view_three, view_four]
 
 =begin Example if you wanted to add another lesson here
    pie_one = OpenStruct.new(:type => "explnation",

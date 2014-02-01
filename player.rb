@@ -6,7 +6,7 @@ class Player
 
    @current_screen = nil
 #   @last_screen = nil
-   @completion_state = nil # Add things here as the person completes 
+   @completion_state = nil # Add things here as the person completes
    @completion_point = 0 #get points everytime they do an action we expect
    @main_screen = nil #won't be changed for the rest of the lifecycle
 
@@ -30,7 +30,7 @@ class Player
       if new_screen != @current_screen #prevent losing "backability" when getting to the same screen 
           #byebug
           @KEY_TO_SCREEN['back'] = @current_screen
-      end 
+      end
       @completion_state << @current_screen.completion_badge
       @current_screen = new_screen
    end
