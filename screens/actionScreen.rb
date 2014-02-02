@@ -69,13 +69,17 @@ class ActionScreen < Screen
         sleep(rand*1.5)
         print_plus_break
         print "\n\n"
-        self.payload(load_key)
+        payload_complete = self.payload(load_key)
         print "\n"
         print_plus_break
-        if @payload_switch
-            return
+        #byebug
+        if not payload_complete #@payload_switch
+            sleep(0.25)
+            notify( "\nExiting early!")
+            sleep(0.50)
+            return false
         end
-        puts "\nYou're done with this part! Press Enter to return to previous screen!:"
+        notify("\nYou're done with this part! Press Enter to return to previous screen!:")
         gets.chomp
     end
 
@@ -86,14 +90,15 @@ class ActionScreen < Screen
             elsif load.type == "code"
                 puts load.content.yellow
             end
-            sleep(1.5)
-            print "\n->Press Enter to continue or type home to go back to the screen you began:".red
+            sleep(0.75)
+            print "\n->Press Enter to continue or type \"home\" to go back to the screen you began: ".red
             user_input = gets.chomp
             if user_input == "home"
-                @payload_switch = true
-                break
+                return false
+                #@payload_switch = true
+                #break
             end
-
         end
+        return true
     end
 end
