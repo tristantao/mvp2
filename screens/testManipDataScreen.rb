@@ -6,7 +6,8 @@ class TestManipDataScreen < ActionScreen
 		super(reachable_target, name, points)
 		view_one = OpenStruct.new(:type => "explanation",
     		:content => "Manipulate manipulate manipulate...",
-    		:description => "Manipulate your data here")
+    		:description => "Manipulate your data here",
+            :action_badge => "testManipDataScreenBadge_Manip")
     	view_two = OpenStruct.new(:type => "code",
     		:content => "some code")
 

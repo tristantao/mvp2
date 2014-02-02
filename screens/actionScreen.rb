@@ -85,7 +85,7 @@ class ActionScreen < Screen
         end
         notify("\nYou're done with this part! Press Enter to return to previous screen!:")
         gets.chomp
-        puts payload_action_complete
+        puts "Returned Badge/False:  " + String(payload_action_complete)
         return payload_action_complete
     end
 

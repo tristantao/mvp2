@@ -6,7 +6,8 @@ class TestVizDataScreen < ActionScreen
 		super(reachable_target, name, points)
 		view_one = OpenStruct.new(:type => "explanation",
     		:content => "Visualizations are important....",
-    		:description => "Make a density visualization here")
+    		:description => "Make a density visualization here",
+            :action_badge => "testVizDataScreenBadge_Viz")
     	view_two = OpenStruct.new(:type => "code",
     		:content => "some code")
 

@@ -7,7 +7,8 @@ class TrainViewDataScreen < ActionScreen
     super(reachable_target, name, points)
     view_one  = OpenStruct.new(:type => "explanation",
       :content => "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:",
-      :description => "This is where you view and explore the data!")
+      :description => "This is where you view and explore the data!",
+      :action_badge => "trainViewDataScreen_View")
 
     view_two = OpenStruct.new(:type => "code",
       :content => "edit(trainData)")
