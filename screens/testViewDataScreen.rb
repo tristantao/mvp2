@@ -6,7 +6,8 @@ class TestViewDataScreen < ActionScreen
 		super(reachable_target, name, points)
     	view_one = OpenStruct.new(:type => "explanation",
     		:content => "Here are some additional functions you can use to view data in R:",
-    		:description => "This is where you view and explore the data!")
+    		:description => "This is where you view and explore the data!",
+            :action_badge => "testViewDataScreenBadge_View")
     	view_two = OpenStruct.new(:type => "code",
     		:content => "tail(testData)\nhead(testData)\ntestData")
 

@@ -20,14 +20,14 @@ class Player
   end
 
   def do
-    new_screen = @current_screen.query_action(self)
+    new_screen, result_badge = @current_screen.query_action(self)
     #byebug
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
       temp_screen = @current_screen
       @current_screen = @KEY_TO_SCREEN[new_screen]
       @last_screen = temp_screen
-    else #just a screen
-      if new_screen != @current_screen #prevent losing "backability" when getting to the same screen 
+    else #regular screen jump
+      if new_screen != @current_screen #prevent losing "backability" when getting to the same screen
           #byebug
           @KEY_TO_SCREEN['back'] = @current_screen
       end
