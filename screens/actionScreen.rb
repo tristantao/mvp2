@@ -15,7 +15,11 @@ class ActionScreen < Screen
     end
 
     def completion_badge
-    	return "actionScreenBadge"
+    	raise "actionScreenBadge missing"
+    end
+
+    def completion_action_badge
+        raise "Each Action must result in a badge"
     end
 
     def query_action (player)
