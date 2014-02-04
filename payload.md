@@ -5,6 +5,7 @@ Double spaces delimits the content pasted per user typing enter
 ##User Pre-setup##
 1. Download and install Rstudio
 2. Sign up for Kaggle, create Kaggle folder and save datasets
+3. Explain how to run Rcode by Ctrl + enter
 
 <h5>MainScreen</h5>
 Welcome to your first data project! Here you will learn several tools for data analysis, build models, and do exploratory analysis! This project is taken from Kaggle, a data science competition website. The project is called Titanic: Machine Learning from Disaster.
@@ -271,7 +272,25 @@ The easiest way to understand classification trees is to apply them to a data se
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
 
+Applying models is quite easy with built in functions and packages you can download that other users have created. Lets first install some packages here:
 
+```R
+install.packages("rpart")
+install.packages("rpart.plot")
+library(rpart)
+library(rpart.plot)
+```
+With classification trees, as we previously said, no cleaning of the data needs to be initially done. We can right now take any of the explanatory variables in trainData (the columns) and use them to predict survival. Lets build our first model by just picking some variables and then plotting them for easier understanding.
 
+```R
+first_rpart <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data = trainData, method = "class")
+rpart.plot(first_rpart)
+```
+As you can see from the plot on the bottom right quadrant of RStudio at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model makes for survival of each observation in the Train dataset we use the predict() function in RStudio.
+
+```R
+train_pred <- predict(first.rpart,trainData,type="class")
+train_pred
+```
 
 
