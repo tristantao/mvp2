@@ -287,11 +287,12 @@ With classification trees, as we previously said, no cleaning of the data needs 
 first_rpart <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data = trainData, method = "class")
 rpart.plot(first_rpart)
 ```
-As you can see from the plot on the bottom right quadrant of RStudio at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model makes for survival of each observation in the Train dataset we use the predict() function in RStudio.
+As you can see from the plot on the bottom right quadrant of RStudio at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model makes for survival of each observation in the Train dataset, we use the predict() function in RStudio.
 
 ```R
 train_pred <- predict(first.rpart,trainData,type="class")
 train_pred
 ```
+Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset. This is called validating our model?
 
 
