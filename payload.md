@@ -271,6 +271,7 @@ From here its easy to see that we could increase both the number of nodes and th
 The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
+###### Add optionality to go to AddVariable screen and Evaluate Screen
 
 Applying models is quite easy with built in functions and packages you can download that other users have created. Lets first install some packages here:
 
