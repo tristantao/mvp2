@@ -267,5 +267,11 @@ To bolster our tree suppose we chose the second attribute to be age, and specifi
 
 From here its easy to see that we could increase both the number of nodes and the specificity of them to make it so each observation results in a terminal node and hence a perfect model! But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse off than a "pruned" model. This is the concept of overfitting that one needs to be conscious of when creating classification trees.
 
+The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
+
+<h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
+
+
+
 
 
