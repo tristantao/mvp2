@@ -293,6 +293,29 @@ As you can see from the plot on the bottom right quadrant of RStudio at each nod
 train_pred <- predict(first.rpart,trainData,type="class")
 train_pred
 ```
-Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset. This is called validating our model?
+Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset. We do this by calculating four numbers: (1) the number of observations we correctly predicted as survived (2) the number of observations we correctly predicted as died (3) the number of observations we predicted survived and in reality died (4) the number of observations we predicted died and in reality survived.
+
+To do this we create a custom function called ErrorMatrix. Its a little bit complicated so go ahead and just copy and paste it into your Rscript.
+
+```R
+ErrorMatrix <- function (y, yhat)
+{
+  conf <- matrix(0, nrow = 2, ncol = 2)
+  colnames(conf) <- c(0, 1)
+  rownames(conf) <- c(0, 1)
+  a <- sum((!y) & (yhat==0))
+  b <- sum((!y) & (yhat==1))
+  c <- sum((y) & (yhat==0)) 
+  d <- sum((y) & (yhat==1))
+  conf[1,1] <- a
+  conf[1,2] <- b
+  conf[2,1] <- c
+  conf[2,2] <- d
+  return(conf)
+}
+ErrorMatrix(as.integer(trainData$Survived), train_pred)
+```
+In our matrix the x-axis represents our predictions and the y-axis represents the actual survival observation. From the matrix you can see that the top left quadrant represents the number of observations we correctly predicted as died, the top right quadrant is the number of observations we incorrectly predicted as survived, and so on.
 
 
+What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors.
