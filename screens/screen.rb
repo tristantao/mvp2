@@ -7,6 +7,7 @@ class Screen
 	@reachable_target = nil
     @name = "Screen"
     @points = 0
+    @description = nil
 
     def initialize(reachable_target, name, points)
         @reachable_target = Set.new(reachable_target)
@@ -46,6 +47,8 @@ class Screen
       while true
         print_double_break
         puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
+        print_single_break
+        puts @description
         self.print_options
         begin
           raw_player_option = gets.chomp.strip

@@ -9,7 +9,7 @@ class TrainManipDataScreen < ActionScreen
     manip_one = view_one = OpenStruct.new(:type => "explanation",
     		:content => "Here you can manipulate your Training data",
     		:description => "This is where you manipulate training data!",
-            :action_badge => "trainManipDataScreenBadge_Manip")
+        :action_badge => "trainManipDataScreenBadge_Manip")
 
     @payload_hash['view'] = [manip_one]
 
