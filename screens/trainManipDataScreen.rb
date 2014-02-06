@@ -6,7 +6,7 @@ class TrainManipDataScreen < ActionScreen
     super(reachable_target, name, points)
     @payload_hash = Hash.new
 
-    manip_one = view_one = OpenStruct.new(:type => "explanation",
+    manip_one = OpenStruct.new(:type => "explanation",
     		:content => "Here you can manipulate your Training data",
     		:description => "This is where you manipulate training data!",
         :action_badge => "trainManipDataScreenBadge_Manip",
@@ -15,7 +15,17 @@ class TrainManipDataScreen < ActionScreen
         :lock_warn => "You can't visit this until you view and vizualize the train data!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
 
-    @payload_hash['view'] = [manip_one]
+    @payload_hash['clean'] = [manip_one]
+
+    add_var_one  = OpenStruct.new(:type => "explanation",
+        :content => "Here you can Add a new Variable to your Training data",
+        :description => "This is where you add a new variable to your training data!",
+        :action_badge => "trainManipDataScreenBadge_Manip",
+        :requirement => ["GLMScreenBadge_Apply", "DTScreenBadge_Apply"], #This is the list of badges that you need to enter this payload.
+        :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+        :lock_warn => "You can't visit this until you build a simple GLM model and a simple Decision Tree Model" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
+      )
+  @payload_hash['add_var'] = [add_var_one]
 
   end
 
