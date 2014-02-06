@@ -30,7 +30,7 @@ Just to let you know this tutorial involves lots of exploring and requires you t
 This is the data screen. Notice that you are given two datasets! The first thing we want to do is put the datasets you downloaded from Kaggle into RStudio! This requires you to set the working directory so RStudio knows where to find the datasets your working with and reading in the files with another function!
 <br>
 <br>
-For Macs write the following:
+Write the following code to
 ```R
 setwd("/Users/your_user_name/Desktop/kaggle/")
 trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
