@@ -10,9 +10,9 @@ class TrainManipDataScreen < ActionScreen
     		:content => "Here you can manipulate your Training data",
     		:description => "This is where you manipulate training data!",
         :action_badge => "trainManipDataScreenBadge_Manip",
-        :requirement => nil, #This is the list of badges that you need to enter this payload.
-        :lock_description => nil, #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
-        :lock_warn => nil #Actual message that plays when trying to enter a locked screen "You need to clean your data!
+        :requirement => ["trainViewDataScreenBadge_View", "trainVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
+        :lock_description => "[LOCKED] First view and vizualize the train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+        :lock_warn => "You can't visit this until you view and vizualize the train data!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
 
     @payload_hash['view'] = [manip_one]
