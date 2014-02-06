@@ -172,12 +172,15 @@ testdata
 ######Must have Train visualize completed (Whoa there, lets do Train first, then Test)
 Visualizations of the Test data is also important, mostly to make sure there isn't any funny business going on! You want to make sure that the Train and Test data are similar so that the model you fit using the Train data applies to the data you have given in the Test data.
 
-<h5>MainScreen -> Data -> Test -> Visualize -> Density&PieChart</h5>
-Here we will teach you how to make another visualization, the pie chart.
+
+<h5>MainScreen -> Data -> Test -> Visualize -> PieChartPlot</h5>
+We will also teach you how to make another visualization, the pie chart.
 ```R
 pie(table(trainData$Pclass)/length(trainData$Pclass), main = "Train Data: % of each Pclass")
 pie(table(testData$Pclass)/length(testData$Pclass), main = "Test Data: % of each Pclass")
 ```
+
+<h5>MainScreen -> Data -> Test -> Visualize -> DensityPlot</h5>
 We also check the density for the Age column to make sure its similar to the Train data
 ```R
 plot(density(trainData$Age, na.rm = TRUE), main ="Train Density")
