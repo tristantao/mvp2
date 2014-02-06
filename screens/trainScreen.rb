@@ -5,7 +5,7 @@ class TrainScreen < Screen
     super(reachable_target, name, points)
   end
 
-  def completion_badge
+  def visit_badge
     return "trainScreenBadge"
   end
 end

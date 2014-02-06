@@ -20,7 +20,7 @@ class RFScreen < ActionScreen
 
   end
 
-  def completion_badge
+  def visit_badge
     return "RFScreenBadge"
   end
 

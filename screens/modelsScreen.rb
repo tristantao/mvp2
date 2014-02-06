@@ -5,7 +5,7 @@ class ModelsScreen < Screen
     super(reachable_target, name, points)
   end
 
-  def completion_badge
+  def visit_badge
     return "modelsScreenBadge"
   end
 end
