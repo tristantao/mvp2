@@ -162,7 +162,7 @@ That's all the variables we could think of!
 You have the following options to work with the Test data:
 
 <h5>MainScreen -> Data -> Test -> View</h5>
-Here are the commands you can use to view the data:
+Here are some additional functions you can use to view data in R:
 ```R
 head(testData)
 tail(testData)
