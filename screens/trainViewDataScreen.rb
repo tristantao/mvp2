@@ -35,7 +35,7 @@ class TrainViewDataScreen < ActionScreen
 =end
   end
 
-  def completion_badge
+  def visit_badge
     return "trainViewDataScreenBadge"
   end
 

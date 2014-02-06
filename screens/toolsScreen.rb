@@ -6,7 +6,7 @@ class ToolsScreen < Screen
   end
 
 
-  def completion_badge
+  def visit_badge
     return "toolsScreenBadge"
   end
 end

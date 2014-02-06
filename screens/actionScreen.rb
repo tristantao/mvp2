@@ -14,25 +14,29 @@ class ActionScreen < Screen
         super()
     end
 
-    def completion_badge
+    def visit_badge
     	raise "actionScreenBadge missing"
     end
 
     def query_action (player)
         #loop to ask player for their actions.
-        #return self, [false|completion_badge]
+        #return self, [false|visit_badge]
         while true
             print_double_break
             puts "\nYou're currently in the \"%s\", Choose You're options from below" % @name
-            self.print_options
+            self.print_options(player)
             raw_player_option = gets.chomp
             raw_player_option.strip!
             #byebug
             if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
                 return raw_player_option, false
-            elsif @payload_hash.key?(raw_player_option)
-                payload_delivered = self.deliver_payload(raw_player_option) #false | "a badge"
-                return self, payload_delivered
+            elsif @payload_hash.key?(raw_player_option) #if one of the payload in [***] is selected
+                if can_visit_payload(player, raw_player_option) #Has this person completed the badges? Print error otherwise.
+                    payload_delivered = self.deliver_payload(raw_player_option) #false | "a badge"
+                    return self, payload_delivered
+                else
+                    next
+                end
             else
                 notify("Please enter a valid option!")
                 next
@@ -41,14 +45,33 @@ class ActionScreen < Screen
         #return self
     end
 
-    def print_options
+    def can_visit_payload(player, raw_player_option)
+        #If the player can visit the screen, return true. else print error msg, and return false
+        attempted_payload = @payload_hash[raw_player_option]
+        attempted_payload_header = attempted_payload[0]
+
+        if player.completed?(attempted_payload_header.requirement)
+            return true
+        else #can't visit that yet, the player hasn't finished visiting all the needed views!
+            puts notify(attempted_payload_header.lock_warn)
+            return false
+        end
+
+    end
+
+    def print_options (player)
         print_single_break
         print "\n"
         puts "back => Go back one screen"
         puts "main => Go back to main screen"
-        #print_single_break
-        #print "\n"
-        @payload_hash.each {|key, val| puts "[#{key}] => %s " % val[0].description}
+        @payload_hash.each do |key, val| #check to see if the player has the certain badge
+            option = val[0]
+            if player.completed?(option.requirement)
+                puts "[#{key}] => %s " % option.description
+            else
+                puts "[#{key}] => %s " % option.lock_description
+            end 
+        end
         print "Your Input: ".magenta
     end
 

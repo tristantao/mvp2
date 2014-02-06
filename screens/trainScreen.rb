@@ -6,7 +6,7 @@ class TrainScreen < Screen
     @description = "\nYou have the following options to work with the Train data:"
   end
 
-  def completion_badge
+  def visit_badge
     return "trainScreenBadge"
   end
 end

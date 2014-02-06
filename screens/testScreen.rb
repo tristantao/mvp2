@@ -6,7 +6,7 @@ class TestScreen < Screen
   end
 
 
-  def completion_badge
+  def visit_badge
     return "testScreenBadge"
   end
 end

@@ -15,7 +15,7 @@ class TestManipDataScreen < ActionScreen
     	@payload_hash['view'] = [view_one, view_two]
 	end
 
-	def completion_badge
+	def visit_badge
 		return "testManipDataScreenBadge"
 	end
 

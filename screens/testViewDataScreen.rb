@@ -16,7 +16,7 @@ class TestViewDataScreen < ActionScreen
 
 	end
 
-	def completion_badge
+	def visit_badge
 		return "testViewDataScreenBadge"
 	end
 

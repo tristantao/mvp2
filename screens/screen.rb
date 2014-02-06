@@ -44,6 +44,7 @@ class Screen
     def query_action (player)
         #Queries player for where the next screen is
         #@returns the index of the reachable_target that the player wants to go next
+        #also returns false as second var, which is indicating that no action badge was awarded.
       while true
         print_double_break
         puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
@@ -55,7 +56,7 @@ class Screen
           raw_player_option.strip!
           #byebug
           if player.KEY_TO_SCREEN.key? raw_player_option #If a special screen jump
-            return raw_player_option
+            return raw_player_option, false
           end
           player_choice = Integer(raw_player_option)
         rescue ArgumentError => e
@@ -69,7 +70,7 @@ class Screen
         end
       end
       temp_array = @reachable_target.to_a
-      return  temp_array[player_choice]
+      return  temp_array[player_choice], false
     end
 
     def print_options
@@ -95,7 +96,7 @@ class Screen
         print "+".yellow * 25
     end
 
-    def completion_badge
-    	raise "A screen must have a completion badge!"
+    def visit_badge
+    	raise "A screen must have a visit_badge!"
     end
 end
