@@ -27,35 +27,22 @@ Try ```1+1``` It should now pop up on the bottom left window labeled "Console". 
 Just to let you know this tutorial involves lots of exploring and requires you to do certain parts before others! We wanted to replicate the role of a data analyst as closely as possible. Have fun and Happy Exploring!
 
 <h5>MainScreen -> Data</h5>
-This is the data screen. Notice that you are given two datasets! The first thing we want to do is put the datasets you downloaded from Kaggle into RStudio! This requires you to set the working directory so RStudio knows where to find the datasets your working with and reading in the files with another function!
-<br>
-<br>
-For Macs write the following:
-```R
-setwd("/Users/your_user_name/Desktop/kaggle/")
-trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
-testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
-```
-For Windows users write the following:
-```R
-setwd("C://Users//Folder//Folder//CurrentFolder//")
-trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
-testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
-```
-Which one should you look at first?
+Notice that you are given two datasets! We will use the Train dataset to build our model and then make predictions for the observations in the Test dataset.
 
 <h5>MainScreen -> Data -> Train</h5>
 You have the following options to work with the Train data:
 
 <h5>MainScreen -> Data -> Train -> View</h5>
-Taking a brief look at the data first is always a good move to get yourself familiarized. You can use the following
-function to see the first six rows and all the columns of the data.
-<br>
-<br>
+Taking a brief look at the data first is always a good move to get yourself familiarized. The first thing we want to do is put the datasets you downloaded from Kaggle into RStudio! Write the following code to "read in" your data into RStudio:
+```R
+trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
+testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
+```
+Now you can use the following function to see the first six rows and all the columns of the data.
 ```R
 head(trainData)
 ```
-You can also just input ```trainData``` to print out the entire dataset.
+You can also just type ```trainData``` to print out the entire dataset into RStudio.
 <br>
 <br>
 Take a moment to make sure you understand, what do each of the rows represent? What do each of the columns represent? The two confusing columns are "SibSp" and "Parch". "SibSp" is the sum of the sibilings and spouses aboard for that passenger. "Parch" is the sum of the parents and children aboard for that passenger.
