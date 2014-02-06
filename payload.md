@@ -255,19 +255,26 @@ You chose to learn classification trees. Choose to learn the theory and concepts
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Wiki</h5>
 Classification Trees is a popular predictive modeling approach in machine learning and data mining because of its simplicity. It is also easy to visualize the result and express the decisions made. 
-
+<br>
+<br>
 The biggest advantage of classification trees is that there is very little preparation that must be done to the data. Other techniques require categorical variables to be converted and missing values inferenced. Classification trees are also effective on large data sets.
-
+<br>
+<br>
 The biggest disadvantage of classification trees is the problem of overfitting. Mechanisms to avoid this must be applied so that overfitting does not occur.
-
+<br>
+<br>
 A tree is made up of interior nodes and terminal nodes and is actually structured upside down so the root node is at the top of the tree and branches downwards from it. At each node of a tree, an attribute from your data is used to segment your data. Attributes along the path to a terminal node give the characteristics of a segment. The terminal nodes represent a segment of your data filtered by specific attributes.
-
+<br>
+<br>
 Terminal nodes can also represent probability estimations if we want to predict the probability of membership in that segment. In our Train data lets say we use Sex (Male/Female) as the attribute for our first node. Since from our exploratory analysis we know that a much larger percentage of women survived we could make predictions on survival simply from whether an observation was a man or woman.
-
+<br>
+<br>
 To bolster our tree suppose we chose the second attribute to be age, and specifically, if age is less than 18. This is because we hypothesize again the women and children standard. At the two nodes separating men from women we would now further segment these two groups by age. Now we have four terminal nodes: men aged 18 and greater, men aged 18 and less, women aged 18 and greater, women aged 18 and less.
-
+<br>
+<br>
 From here its easy to see that we could increase both the number of nodes and the specificity of the attributes applied to the nodes to make it so each observation results in a terminal node and hence a perfect model! But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse than a model which "prunes" certain attributes. This is the concept of overfitting that one needs to be conscious of when creating classification trees.
-
+<br>
+<br>
 In general overfitting is when you find patterns in the data (in our case a very very specific pattern but a pattern nonetheless) that does not generalize to new data. Don't worry if this doesn't make sense quite yet. The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
@@ -294,9 +301,9 @@ train_pred <- predict(first.rpart,trainData,type="class")
 train_pred
 ```
 Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset. We do this by calculating four numbers: (1) the number of observations we correctly predicted as survived (2) the number of observations we correctly predicted as died (3) the number of observations we predicted survived and in reality died (4) the number of observations we predicted died and in reality survived.
-
+<br>
+<br>
 To do this we create a custom function called ErrorMatrix. Its a little bit complicated so go ahead and just copy and paste it into your Rscript.
-
 ```R
 ErrorMatrix <- function (y, yhat)
 {
@@ -316,9 +323,11 @@ ErrorMatrix <- function (y, yhat)
 ErrorMatrix(as.integer(trainData$Survived), train_pred)
 ```
 In our matrix the x-axis represents our predictions and the y-axis represents the actual survival observation. From the matrix you can see that the top left quadrant represents the number of observations we correctly predicted as died, the top right quadrant is the number of observations we incorrectly predicted as survived, and so on.
-
+<br>
+<br>
 What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors. You can think of these similarly to Type I and Type II errors if you'd like though they are not exactly the same.
-
+<br>
+<br>
 Going back to our model lets now make predictions on our Test dataset for submission to Kaggle!
 ```R
 test_pred <- predict(first_rpart,testData, type = "class")
@@ -337,10 +346,30 @@ A logistic regression model is a generalized linear model which gives you the pr
 
 <h5>MainScreen -> Tools -> Glm -> Apply</h5>
 ###### Must have cleaned TEST data and Added Var screens (The logistic regression model cannot be applied before you fully manipulate it!)
-The theory of logistic regression is much more complicated mathematically so we will not go into it in this tutorial. R will take care of solving/optimizing the model. We don’t have to worry about any complicated Math! Write the following code into your Rscript:
-
+The theory of logistic regression is much more complicated mathematically so we will not go into it in this tutorial. R will take care of solving/optimizing the model. The predictions for each observation come in from the model in the form of a probability score for Survived being 0 or 1. Write the following code to build your logistic model:
 ```R
 train.glm <- glm(Survived ~ Pclass + Sex + Age + Child + Sex*Pclass + Family + Mother, family = binomial, data = trainData)
 summary(train.glm)
+```
+We must apply a cutoff value to determine which probability scores translate to a 1 and which translate to a 0. For simplicity it is generally most effective to choose a cutoff of .5 to minimize errors. Write the following code into your Rscript:
 
+```R
+p.hats <- predict.glm(train.glm, newdata = testData, type = "response")
+ 
+survival <- vector()
+for(i in 1:length(p.hats)) {
+  if(p.hats[i] > .5) {
+    survival[i] <- 1
+  } else {
+    survival[i] <- 0
+  }
+}
+```
+To finish this up for submission to Kaggle we write the following code:
+```R
+kaggle_logistic_sub <- cbind(PassengerId,survival)
+colnames(kaggle_logistic_sub) <- c("PassengerId", "Survived")
+write.csv(kaggle_logistic_sub, file = "kaggle.csv", row.names = FALSE)
+```
+Again, make sure the CSV you submit has only two columns: one labeled as “PassengerID” and another labeled as “Survived”. Hopefully your score improved!
 
