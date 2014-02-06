@@ -251,7 +251,7 @@ Finite!
 Welcome to the Tools Screen. There are tons of machine learning tools that can be applied to this data project but we will teach only two.
 
 <h5>MainScreen -> Tools -> ClassificationTrees</h5>
-Classification trees. Choose to learn the theory and concepts or if your already familiar you can apply it to our data project.
+You chose to learn classification trees. Choose to learn the theory and concepts or if your already familiar you can apply it to our data project.
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Wiki</h5>
 Classification Trees is a popular predictive modeling approach in machine learning and data mining because of its simplicity. It is also easy to visualize the result and express the decisions made. 
@@ -264,11 +264,11 @@ A tree is made up of interior nodes and terminal nodes and is actually structure
 
 Terminal nodes can also represent probability estimations if we want to predict the probability of membership in that segment. In our Train data lets say we use Sex (Male/Female) as the attribute for our first node. Since from our exploratory analysis we know that a much larger percentage of women survived we could make predictions on survival simply from whether an observation was a man or woman.
 
-To bolster our tree suppose we chose the second attribute to be age, and specifically if age is less than 18. This is because we hypothesize again the women and children standard. At the two original terminal nodes separating men from women we would now further segment these two populations by age. Here we would now have four terminal nodes: men aged 18 and greater, men aged 18 and less, women aged 18 and greater, women aged 18 and less.
+To bolster our tree suppose we chose the second attribute to be age, and specifically, if age is less than 18. This is because we hypothesize again the women and children standard. At the two nodes separating men from women we would now further segment these two groups by age. Now we have four terminal nodes: men aged 18 and greater, men aged 18 and less, women aged 18 and greater, women aged 18 and less.
 
-From here its easy to see that we could increase both the number of nodes and the specificity of them to make it so each observation results in a terminal node and hence a perfect model! But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse off than a "pruned" model. This is the concept of overfitting that one needs to be conscious of when creating classification trees.
+From here its easy to see that we could increase both the number of nodes and the specificity of the attributes applied to the nodes to make it so each observation results in a terminal node and hence a perfect model! But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse than a model which "prunes" certain attributes. This is the concept of overfitting that one needs to be conscious of when creating classification trees.
 
-The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
+In general overfitting is when you find patterns in the data (in our case a very very specific pattern but a pattern nonetheless) that does not generalize to new data. Don't worry if this doesn't make sense quite yet. The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
 ###### Add optionality to go to AddVariable screen and Evaluate Screen
@@ -281,13 +281,13 @@ install.packages("rpart.plot")
 library(rpart)
 library(rpart.plot)
 ```
-With classification trees, as we previously said, no cleaning of the data needs to be initially done. We can right now take any of the explanatory variables in trainData (the columns) and use them to predict survival. Lets build our first model by just picking some variables and then plotting them for easier understanding.
+With classification trees, as we previously said, no cleaning of the data needs to be initially done. We can right now take any of the attributes in trainData (the columns) and use them to predict survival. Lets build our first model by just picking some variables and then plotting them for easier understanding.
 
 ```R
 first_rpart <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data = trainData, method = "class")
 rpart.plot(first_rpart)
 ```
-As you can see from the plot on the bottom right quadrant of RStudio at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model makes for survival of each observation in the Train dataset, we use the predict() function in RStudio.
+As you can see from the plot on the bottom right quadrant of RStudio, at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model "first_rpart" makes for the survival of each observation in the Train dataset, we use the predict() function in RStudio.
 
 ```R
 train_pred <- predict(first.rpart,trainData,type="class")
@@ -317,7 +317,30 @@ ErrorMatrix(as.integer(trainData$Survived), train_pred)
 ```
 In our matrix the x-axis represents our predictions and the y-axis represents the actual survival observation. From the matrix you can see that the top left quadrant represents the number of observations we correctly predicted as died, the top right quadrant is the number of observations we incorrectly predicted as survived, and so on.
 
+What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors. You can think of these similarly to Type I and Type II errors if you'd like though they are not exactly the same.
 
-What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors.
+Going back to our model lets now make predictions on our Test dataset for submission to Kaggle!
+```R
+test_pred <- predict(first_rpart,testData, type = "class")
+kaggle_tree_sub <- cbind(PassengerId,test_pred)
+colnames(kaggle_tree_sub) <- c("PassengerId", "Survived")
+write.csv(kaggle_tree_sub, file = "kaggle_tree.csv", row.names = FALSE)
+```
+A file titled "kaggle_tree" should now be in the same folder which you saved the original Test and Train datasets. Use this file to make a submission on the Kaggle website and see where you rank!
+Note: Make sure the CSV you submit has only two columns: one labeled as “PassengerID” and another labeled as “Survived”.
+
+<h5>MainScreen -> Tools -> Glm</h5>
+You chose to learn logistic regression. Choose to learn the theory and concepts or if your already familiar you can apply it to our data project.
+
+<h5>MainScreen -> Tools -> Glm -> Wiki</h5>
+A logistic regression model is a generalized linear model which gives you the probability of whether or not an observation is in a group which is typically categorical. Since whether a passenger survived or not is binary, we use logistic regression. Linear regression is applied when the variable you are predicting is continuous. 
+
+<h5>MainScreen -> Tools -> Glm -> Apply</h5>
+###### Must have cleaned TEST data and Added Var screens (The logistic regression model cannot be applied before you fully manipulate it!)
+The theory of logistic regression is much more complicated mathematically so we will not go into it in this tutorial. R will take care of solving/optimizing the model. We don’t have to worry about any complicated Math! Write the following code into your Rscript:
+
+```R
+train.glm <- glm(Survived ~ Pclass + Sex + Age + Child + Sex*Pclass + Family + Mother, family = binomial, data = trainData)
+summary(train.glm)
 
 
