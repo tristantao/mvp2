@@ -92,8 +92,6 @@ class ActionScreen < Screen
         sleep (0.75)
         print "complete!".green
         sleep(rand*1.5)
-        puts "\nRead and apply the following code to apply the appropriate function:"
-        sleep(rand*1.5)
         print_plus_break
         print "\n\n"
         payload_action_complete = self.payload(load_key)
