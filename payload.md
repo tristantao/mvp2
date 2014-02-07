@@ -186,7 +186,7 @@ We also check the density for the Age column to make sure its similar to the Tra
 plot(density(trainData$Age, na.rm = TRUE), main ="Train Density")
 plot(density(testData$Age,na.rm = T), main = "Test Density")
 ```
-Everything should look good!
+What you want to verify is that the visualizations of the two pie charts and the two density plots look approximately similar. Everything should look good!
 
 <h5>MainScreen -> Data -> Test -> Manipulate</h5>
 Same deal as manipulating the Train data. We must clean up the Test dataset so that our model works and add variables to strengthen our model.
