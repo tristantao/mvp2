@@ -12,6 +12,10 @@ class Player
    @action_badges = nil
 
    @KEY_TO_SCREEN = nil
+   @screen_stack = nil
+   # MAKE AN Array: and use push() and pop() to keep track of which screen your own when
+   # you do back
+
 
   def initialize(screen)
     @current_screen = screen
@@ -19,27 +23,38 @@ class Player
     @visit_badges = Set.new
     @action_badges = Set.new
     @KEY_TO_SCREEN = {"main" => @main_screen, "back" => screen}
+    @screen_stack = []
   end
 
   def do
+    @screen_stack.push(@current_screen)
     new_screen, result_badge = @current_screen.query_action(self)
     if result_badge #Successfully finished a payload
       @action_badges << result_badge
     end
     #byebug
+
+    # HERE IS WHERE YOU NEED TO PUT SCREENS INTO A STACK, make sure its unique and if
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
-      temp_screen = @current_screen
+      puts @screen_stack.pop
+      @KEY_TO_SCREEN['back'] = @screen_stack.pop
       @current_screen = @KEY_TO_SCREEN[new_screen]
-      @last_screen = temp_screen
+
+
+
+      #temp_screen = @current_screen
+      #@current_screen = @KEY_TO_SCREEN[new_screen]
+      #@last_screen = temp_screen
     else #regular screen jump
       if new_screen != @current_screen #prevent losing "backability" when getting to the same screen
           #byebug
-          @KEY_TO_SCREEN['back'] = @current_screen
+          #@KEY_TO_SCREEN['back'] = @screen_stack.pop
       end
       @visit_badges << @current_screen.visit_badge
       @current_screen = new_screen
    end
    #byebug
+   puts @screen_stack
    @current_screen.enter_screen_action() #printing screen info/payload happens here
    return true
   end
