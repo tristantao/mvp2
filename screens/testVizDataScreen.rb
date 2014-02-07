@@ -5,22 +5,24 @@ class TestVizDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
 		view_one = OpenStruct.new(:type => "explanation",
-    		:content => "Visualizations are important....",
-    		:description => "Make a density visualization here",
+    		:content => "We will also teach you how to make another visualization, the pie chart.",
+    		:description => "Make a piechart visualization here",
             :action_badge => "testVizDataScreenBadge_Viz")
     	view_two = OpenStruct.new(:type => "code",
-    		:content => "some code")
+    		:content => "pie(table(trainData$Pclass)/length(trainData$Pclass), main = \"Train Data: % of each Pclass\")\npie(table(testData$Pclass)/length(testData$Pclass), main = \"Test Data: % of each Pclass\")"
+        )
 
     	@payload_hash = Hash.new
-    	@payload_hash['density'] = [view_one, view_two]
+    	@payload_hash['piechart'] = [view_one, view_two]
 
-    	view_one_barplot = OpenStruct.new(:type => "explanation",
-    		:content => "Visualizations are important....",
-    		:description => "Make a barplot visualization here")
-    	view_two_barplot = OpenStruct.new(:type => "code",
-    		:content => "some code")
+    	view_one_density = OpenStruct.new(:type => "explanation",
+    		:content => "We also check the density for the Age column to make sure its similar to the Train data",
+    		:description => "Make a density visualization here")
+    	view_two_density = OpenStruct.new(:type => "code",
+    		:content => "plot(density(trainData$Age, na.rm = TRUE), main =\"Train Density\")\nplot(density(testData$Age,na.rm = T), main = \"Test Density\")"
+        )
 
-    	@payload_hash['barplot'] = [view_one_barplot, view_two_barplot]
+    	@payload_hash['density'] = [view_one_density, view_two_density]
 
 	end
 
