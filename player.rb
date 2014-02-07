@@ -51,7 +51,7 @@ class Player
       return true
     else
       #byebug
-      for badge in badges do 
+      for badge in badges do
         if @action_badges.include?(badge) or @visit_badges.include?(badge)
           next
         else #missing a badge

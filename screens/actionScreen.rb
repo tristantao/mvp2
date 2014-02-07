@@ -70,7 +70,7 @@ class ActionScreen < Screen
                 puts "[#{key}] => %s " % option.description
             else
                 puts "[#{key}] => %s " % option.lock_description
-            end 
+            end
         end
         print "Your Input: ".magenta
     end

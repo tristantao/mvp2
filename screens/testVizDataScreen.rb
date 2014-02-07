@@ -17,13 +17,13 @@ class TestVizDataScreen < ActionScreen
 
     	view_one_density = OpenStruct.new(:type => "explanation",
     		:content => "We also check the density for the Age column to make sure its similar to the Train data",
-    		:description => "Make a density visualization here")
+    		:description => "Make a density visualization here",
+            :action_badge => "testVizDataScreenBadge_Viz")
     	view_two_density = OpenStruct.new(:type => "code",
     		:content => "plot(density(trainData$Age, na.rm = TRUE), main =\"Train Density\")\nplot(density(testData$Age,na.rm = T), main = \"Test Density\")"
         )
         view_three_density = OpenStruct.new(:type => "explanation",
             :content => "What you want to verify is that the visualizations of the two pie charts and the two density plots look approximately similar. Everything should look good!")
-
     	@payload_hash['density'] = [view_one_density, view_two_density, view_three_density]
 
 	end
