@@ -8,7 +8,7 @@ class TrainViewDataScreen < ActionScreen
     view_one  = OpenStruct.new(:type => "explanation",
       :content => "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:",
       :description => "This is where you view and explore the data!",
-      :action_badge => "trainViewDataScreen_View",
+      :action_badge => "trainViewDataScreenBadge_View",
       :requirement => nil, #This is the list of badges that you need to enter this payload.
       :lock_description => nil, #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
       :lock_warn => nil) #Actual message that plays when trying to enter a locked screen "You need to clean your data!
