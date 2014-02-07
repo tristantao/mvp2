@@ -50,7 +50,17 @@ class Player
     if badges == nil
       return true
     else
-
+      #byebug
+      for badge in badges do 
+        if @action_badges.include?(badge) or @visit_badges.include?(badge)
+          next
+        else #missing a badge
+          return false
+        end
+      end
     end
+    return true
   end
+
+
 end

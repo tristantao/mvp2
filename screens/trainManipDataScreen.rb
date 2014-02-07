@@ -20,7 +20,7 @@ class TrainManipDataScreen < ActionScreen
     add_var_one  = OpenStruct.new(:type => "explanation",
         :content => "Here you can Add a new Variable to your Training data",
         :description => "This is where you add a new variable to your training data!",
-        :action_badge => "trainManipDataScreenBadge_Manip",
+        :action_badge => "trainManipDataScreenBadge_AddVar",
         :requirement => ["GLMScreenBadge_Apply", "DTScreenBadge_Apply"], #This is the list of badges that you need to enter this payload.
         :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
         :lock_warn => "You can't visit this until you build a simple GLM model and a simple Decision Tree Model" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
