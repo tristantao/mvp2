@@ -162,7 +162,7 @@ That's all the variables we could think of!
 You have the following options to work with the Test data:
 
 <h5>MainScreen -> Data -> Test -> View</h5>
-Here are the commands you can use to view the data:
+Here are some additional functions you can use to view data in R:
 ```R
 head(testData)
 tail(testData)
@@ -172,18 +172,21 @@ testdata
 ######Must have Train visualize completed (Whoa there, lets do Train first, then Test)
 Visualizations of the Test data is also important, mostly to make sure there isn't any funny business going on! You want to make sure that the Train and Test data are similar so that the model you fit using the Train data applies to the data you have given in the Test data.
 
-<h5>MainScreen -> Data -> Test -> Visualize -> Density&PieChart</h5>
-Here we will teach you how to make another visualization, the pie chart.
+
+<h5>MainScreen -> Data -> Test -> Visualize -> PieChartPlot</h5>
+We will also teach you how to make another visualization, the pie chart.
 ```R
 pie(table(trainData$Pclass)/length(trainData$Pclass), main = "Train Data: % of each Pclass")
 pie(table(testData$Pclass)/length(testData$Pclass), main = "Test Data: % of each Pclass")
 ```
+
+<h5>MainScreen -> Data -> Test -> Visualize -> DensityPlot</h5>
 We also check the density for the Age column to make sure its similar to the Train data
 ```R
 plot(density(trainData$Age, na.rm = TRUE), main ="Train Density")
 plot(density(testData$Age,na.rm = T), main = "Test Density")
 ```
-Everything should look good!
+What you want to verify is that the visualizations of the two pie charts and the two density plots look approximately similar. Everything should look good!
 
 <h5>MainScreen -> Data -> Test -> Manipulate</h5>
 Same deal as manipulating the Train data. We must clean up the Test dataset so that our model works and add variables to strengthen our model.
