@@ -13,8 +13,6 @@ class Player
 
    @KEY_TO_SCREEN = nil
    @screen_stack = nil
-   # MAKE AN Array: and use push() and pop() to keep track of which screen your own when
-   # you do back
 
 
   def initialize(screen)
@@ -34,27 +32,18 @@ class Player
     end
     #byebug
 
-    # HERE IS WHERE YOU NEED TO PUT SCREENS INTO A STACK, make sure its unique and if
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
-      puts @screen_stack.pop
+      @screen_stack.pop #TRISTAN: I am confused why this works. Isn't this popping twice?
       @KEY_TO_SCREEN['back'] = @screen_stack.pop
       @current_screen = @KEY_TO_SCREEN[new_screen]
-
-
-
-      #temp_screen = @current_screen
-      #@current_screen = @KEY_TO_SCREEN[new_screen]
-      #@last_screen = temp_screen
     else #regular screen jump
       if new_screen != @current_screen #prevent losing "backability" when getting to the same screen
           #byebug
-          #@KEY_TO_SCREEN['back'] = @screen_stack.pop
       end
       @visit_badges << @current_screen.visit_badge
       @current_screen = new_screen
    end
    #byebug
-   puts @screen_stack
    @current_screen.enter_screen_action() #printing screen info/payload happens here
    return true
   end
