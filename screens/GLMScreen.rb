@@ -28,8 +28,8 @@ The predictions for each observation come in from the model in the form of a pro
 for Survived being 0 or 1. Write the following code to build your logistic model:",
         :description => "Fit a GLM model to your dataset",
         :action_badge => "GLMScreenBadge_Apply",
-        :requirement => ["trainManipDataScreenBadge_Manip", "trainViewDataScreen_View", "trainVizDataScreenBadge_Viz",
-                          "testManipDataScreenBadge_Manip", "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"],
+        #:requirement => ["trainManipDataScreenBadge_Manip", "trainViewDataScreenBadge_View", "trainVizDataScreenBadge_Viz",
+        #                  "testManipDataScreenBadge_Manip", "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"],
         :lock_description => "[LOCKED] You must first explore/clean the train/test data first!",
         :lock_warn => "Must have cleaned TEST/TRAIN data (The logistic regression model cannot be applied before you fully manipulate/clean both datasets!)")
 

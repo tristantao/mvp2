@@ -60,8 +60,8 @@ class CTScreen < ActionScreen
         :content => "Applying models is quite easy with built in functions and packages you can download that other users have created. Lets first install some packages here:",
         :description => "This Wiki walks you through fitting a classification tree model to your dataset",
         :action_badge => "CTScreenBadge_Apply",
-        :requirement => ["trainViewDataScreen_View", "trainVizDataScreenBadge_Viz",
-                          "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
+        #:requirement => ["trainViewDataScreenBadge_View", "trainVizDataScreenBadge_Viz",
+        #                  "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
         :lock_description => "[LOCKED] You must have visualized both datasets first!", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "You must first view and visualize both data sets!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
