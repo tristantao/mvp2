@@ -31,7 +31,6 @@ class Player
       @action_badges << result_badge
     end
     #byebug
-
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
       @screen_stack.pop
       @KEY_TO_SCREEN['back'] = @screen_stack.pop
