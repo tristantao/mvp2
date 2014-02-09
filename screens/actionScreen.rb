@@ -26,6 +26,7 @@ class ActionScreen < Screen
             puts @description
             print_single_break
             puts "You're currently in the \"%s\", Choose You're options from below" % @name
+            print_options(player)
             raw_player_option = gets.chomp
             raw_player_option.strip!
             #byebug
