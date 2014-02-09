@@ -4,12 +4,14 @@ require_relative "actionScreen"
 class TestManipDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
+        @display_description = "Manipulate the testing data"
+
 		view_one = OpenStruct.new(:type => "header",
     		:content => "Same deal as with the Train data. We remove columns we don't use in\nour analysis, make inferences on the missing age values, and create dummy variables\nfor the Sex column",
     		:description => "Manipulate your data here",
         :action_badge => "testManipDataScreenBadge_Manip",
         :requirement => ["testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
-        :lock_description => "[LOCKED] First view and vizualize the Test data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+        :lock_description => "[LOCKED] First view and vizualize the Test data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "You can't visit this until you view and vizualize the Train data!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
 
@@ -27,7 +29,7 @@ class TestManipDataScreen < ActionScreen
         :description => "This is where you bolster your model with new variables applied to your Test data!",
         :action_badge => "testManipDataScreenBadge_AddVar",
         :requirement => ["GLMScreenBadge_Apply", "DTScreenBadge_Apply", "trainManipDataScreenBadge_AddVar"], #This is the list of badges that you need to enter this payload.
-        :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model, and add var to train data", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+        :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model, and add var to train data", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "You can't visit this until you build a simple GLM model and a simple Decision Tree Model and add var to train data" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
         )
         add_var_two = OpenStruct.new(:type => "code",

@@ -73,7 +73,7 @@ class ActionScreen < Screen
                 puts "[#{key}] => %s " % option.lock_description
             end
         end
-        self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
+        self.options.each_with_index {|val, index| puts "#{index} => %s" % val.name }
         print "Your Input: ".magenta
     end
 

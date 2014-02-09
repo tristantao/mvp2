@@ -5,17 +5,18 @@ require_relative "actionScreen"
 class GLMScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "You chose to learn logistic regression. 
+    @description = "You chose to learn logistic regression.
 You can learn more about the theory and concepts and/or you can simply straight apply it to our data project."
+    @display_description = "Learn and build a Generalized Linear Model here"
 
     @payload_hash = Hash.new
 
     wiki_one = OpenStruct.new(:type => "header",
-        :content => "A logistic regression model is a generalized linear model 
-which gives you the probability of whether or not an observation is in a group which is 
+        :content => "A logistic regression model is a generalized linear model
+which gives you the probability of whether or not an observation is in a group which is
 typically categorical. Since whether a passenger survived or not is binary, we use logistic regression.
 Linear regression is applied when the variable you are predicting is continuous.",
-        :description => "This Wiki teaches you more details about GLM", 
+        :description => "This Wiki teaches you more details about GLM",
         :action_badge => "GLMScreenBadge_View")
     @payload_hash['wiki'] = [wiki_one]
 
@@ -57,7 +58,7 @@ write.csv(kaggle_logistic_sub, file = \"kaggle.csv\", row.names = FALSE)")
     apply_seven = OpenStruct.new(:type => "code",
                 :content => "Again, make sure the CSV you submit has only two columns:
 one labeled as “PassengerID” and another labeled as “Survived”. Hopefully your score improved!")
-    
+
     @payload_hash['apply'] = [apply_one, apply_two, apply_three, apply_four, apply_five]
   end
 

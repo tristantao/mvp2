@@ -4,7 +4,9 @@ class ToolsScreen < Screen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
     @description = "Welcome to the Tools Screen. There are tons of machine learning tools that can be applied to\nthis data project but we will teach two."
+	  @display_description = "Learn and apply Analytics tools here"
   end
+
 
 
   def visit_badge

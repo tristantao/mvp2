@@ -3,8 +3,9 @@ require_relative "screen"
 class DataScreen < Screen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "Notice that you are given two datasets! We will use the Train dataset to 
+    @description = "Notice that you are given two datasets! We will use the Train dataset to
 build our model and then make predictions for the observations in the Test dataset."
+	@display_description = "Work with the data"
   end
   def visit_badge
     return "dataScreenBadge"

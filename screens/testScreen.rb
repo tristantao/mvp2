@@ -3,7 +3,10 @@ require_relative "screen"
 class TestScreen < Screen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "You have the following options to work with the Test data:"
+    @description = "This is the place where you work with testing data. You can view,
+vizualize, and eventually modify the data."
+		@display_description = "Work with the testing data."
+
   end
 
 

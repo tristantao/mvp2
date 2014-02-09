@@ -3,7 +3,9 @@ require_relative "screen"
 class TrainScreen < Screen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "You have the following options to work with the Train data:"
+    @description = "This is the place where you work with training data. You can view,
+vizualize, and eventually modify the data."
+	@display_description = "Work with the training data."
 	end
 
   def visit_badge
