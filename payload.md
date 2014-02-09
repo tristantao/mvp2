@@ -344,7 +344,7 @@ You chose to learn logistic regression. You can learn more about the theory and 
 A logistic regression model is a generalized linear model which gives you the probability of whether or not an observation is in a group which is typically categorical. Since whether a passenger survived or not is binary, we use logistic regression. Linear regression is applied when the variable you are predicting is continuous. 
 
 <h5>MainScreen -> Tools -> Glm -> Apply</h5>
-###### Must have cleaned TEST data and Added Var screens (The logistic regression model cannot be applied before you fully manipulate it!)
+###### Must have cleaned TEST/TRAIN data (The logistic regression model cannot be applied before you fully manipulate/clean both datasets!)
 The theory of logistic regression is much more complicated mathematically so we will not go into it in this tutorial. R will take care of solving/optimizing the model. The predictions for each observation come in from the model in the form of a probability score for Survived being 0 or 1. Write the following code to build your logistic model:
 ```R
 train.glm <- glm(Survived ~ Pclass + Sex + Age + Child + Sex*Pclass + Family + Mother, family = binomial, data = trainData)
