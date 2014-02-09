@@ -27,9 +27,9 @@ test_screen = TestScreen.new([test_view_data_screen, test_viz_data_screen, test_
 data_screen = DataScreen.new([train_screen, test_screen], "Data Screen", 0)
 
 glm_screen = GLMScreen.new([], "GLM Screen", 0)
-dt_screen = DTScreen.new([], "DT Screen", 0)
+ct_screen = CTScreen.new([], "CT Screen", 0)
 
-tools_screen = ToolsScreen.new([dt_screen, glm_screen], "Tools Screen", 0) #TODO Update Tools screen
+tools_screen = ToolsScreen.new([ct_screen, glm_screen], "Tools Screen", 0) #TODO Update Tools screen
 
 #MainScreen Node
 main_screen = MainScreen.new([data_screen, tools_screen], "Main Screen", 0)
