@@ -262,19 +262,40 @@ The biggest advantage of classification trees is that there is very little prepa
 The biggest disadvantage of classification trees is the problem of overfitting. Mechanisms to avoid this must be applied so that overfitting does not occur.
 <br>
 <br>
-A tree is made up of interior nodes and terminal nodes and is actually structured upside down so the root node is at the top of the tree and branches downwards from it. At each node of a tree, an attribute from your data is used to segment your data. Attributes along the path to a terminal node give the characteristics of a segment. The terminal nodes represent a segment of your data filtered by specific attributes.
+A tree is made up of interior nodes and terminal nodes and is actually structured upside down so the root node is at the top of the tree and branches downwards from it.
 <br>
 <br>
-Terminal nodes can also represent probability estimations if we want to predict the probability of membership in that segment. In our Train data lets say we use Sex (Male/Female) as the attribute for our first node. Since from our exploratory analysis we know that a much larger percentage of women survived we could make predictions on survival simply from whether an observation was a man or woman.
+At each node of a tree, an attribute from your data is used to segment your data. Attributes along the path to a terminal node give the characteristics of a segment. 
 <br>
 <br>
-To bolster our tree suppose we chose the second attribute to be age, and specifically, if age is less than 18. This is because we hypothesize again the women and children standard. At the two nodes separating men from women we would now further segment these two groups by age. Now we have four terminal nodes: men aged 18 and greater, men aged 18 and less, women aged 18 and greater, women aged 18 and less.
+The terminal nodes represent a segment of your data filtered by specific attributes.
 <br>
 <br>
-From here its easy to see that we could increase both the number of nodes and the specificity of the attributes applied to the nodes to make it so each observation results in a terminal node and hence a perfect model! But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse than a model which "prunes" certain attributes. This is the concept of overfitting that one needs to be conscious of when creating classification trees.
+Terminal nodes can also represent probability estimations if we want to predict the probability of membership in that segment. In our Train data lets say we use Sex (Male/Female) as the attribute for our first node. 
 <br>
 <br>
-In general overfitting is when you find patterns in the data (in our case a very very specific pattern but a pattern nonetheless) that does not generalize to new data. Don't worry if this doesn't make sense quite yet. The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
+Since from our exploratory analysis we know that a much larger percentage of women survived we could make predictions on survival simply from whether an observation was a man or woman.
+<br>
+<br>
+To bolster our tree suppose we chose the second attribute to be age, and specifically, if age is less than 18. This is because we hypothesize again the women and children standard. 
+<br>
+<br>
+At the two nodes separating men from women we would now further segment these two groups by age. Now we have four terminal nodes: men aged 18 and greater, men aged 18 and less, women aged 18 and greater, women aged 18 and less.
+<br>
+<br>
+From here its easy to see that we could increase both the number of nodes and the specificity of the attributes applied to the nodes to make it so each observation results in a terminal node and hence a perfect model! 
+<br>
+<br>
+But wait, because how would this model then apply to a new data set such as Test? It wouldn't be 100% correct and in fact would be significantly worse than a model which "prunes" certain attributes.
+<br>
+<br>
+This is the concept of overfitting that one needs to be conscious of when creating classification trees.
+<br>
+<br>
+In general overfitting is when you find patterns in the data (in our case a very very specific pattern but a pattern nonetheless) that does not generalize to new data. Don't worry if this doesn't make sense quite yet.
+<br>
+<br>
+The easiest way to understand classification trees is to apply them to a data set. Move onwards to start building your first model!
 
 <h5>MainScreen -> Tools -> ClassificationTrees -> Apply</h5>
 ###### Add optionality to go to AddVariable screen and Evaluate Screen
