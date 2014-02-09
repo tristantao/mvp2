@@ -2,6 +2,15 @@
 
 ###Notes
 Double spaces delimits the content pasted per user typing enter
+
+Special Types:
+
+* ~~start~~ header
+* finish
+* code
+* explanation
+* reinforce
+
 ##User Pre-setup##
 1. Download and install Rstudio
 2. Sign up for Kaggle, create Kaggle folder and save datasets
