@@ -26,7 +26,6 @@ class ActionScreen < Screen
             puts @description
             print_single_break
             puts "You're currently in the \"%s\", Choose You're options from below" % @name
-            self.print_options(player)
             raw_player_option = gets.chomp
             raw_player_option.strip!
             #byebug
@@ -73,6 +72,7 @@ class ActionScreen < Screen
                 puts "[#{key}] => %s " % option.lock_description
             end
         end
+        self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
         print "Your Input: ".magenta
     end
 

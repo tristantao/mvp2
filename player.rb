@@ -34,13 +34,11 @@ class Player
     end
     #byebug
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
-      if @screen_stack.length == 1
-        @KEY_TO_SCREEN['back'] = @main_screen
-      else
-        @screen_stack.pop
-        @KEY_TO_SCREEN['back'] = @screen_stack.pop
-        @current_screen = @KEY_TO_SCREEN[new_screen]
+      if @screen_stack.length > 1
+          @screen_stack.pop
       end
+      @KEY_TO_SCREEN['back'] = @screen_stack.pop
+      @current_screen = @KEY_TO_SCREEN[new_screen]
     else #regular screen jump
       if new_screen != @current_screen #prevent losing "backability" when getting to the same screen
           #byebug
