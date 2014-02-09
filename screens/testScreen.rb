@@ -6,7 +6,6 @@ class TestScreen < Screen
     @description = "This is the place where you work with testing data. You can view,
 vizualize, and eventually modify the data."
 		@display_description = "Work with the testing data."
-
   end
 
 

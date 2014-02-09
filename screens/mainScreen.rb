@@ -4,7 +4,7 @@ class MainScreen < Screen
 
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "This is the main screen of the tutorial!"
+    @description = "This is the main screen. Choose from the options below:"
     @payload_hash = Hash.new
 
     puts "Welcome to your first data project! Here you will learn several tools for data analysis, build models,
