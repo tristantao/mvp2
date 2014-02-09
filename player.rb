@@ -25,7 +25,9 @@ class Player
   end
 
   def do
-    @screen_stack.push(@current_screen)
+    if @current_screen != @screen_stack[-1]
+      @screen_stack.push(@current_screen)
+    end
     new_screen, result_badge = @current_screen.query_action(self)
     if result_badge #Successfully finished a payload
       @action_badges << result_badge
