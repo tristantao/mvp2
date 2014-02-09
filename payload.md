@@ -198,6 +198,7 @@ plot(density(testData$Age,na.rm = T), main = "Test Density")
 What you want to verify is that the visualizations of the two pie charts and the two density plots look approximately similar. Everything should look good!
 
 <h5>MainScreen -> Data -> Test -> Manipulate</h5>
+######Must have applied GLM or Random Forest First AND variables must be applied in Train (Whoa there, what do you want to add variables too? Also are you sure you've done this for the Train data as well?)
 Same deal as manipulating the Train data. We must clean up the Test dataset so that our model works and add variables to strengthen our model.
 
 <h5>MainScreen -> Data -> Test -> Manipulate -> Cleaning</h5>
@@ -215,7 +216,6 @@ for (i in 1:nrow(testData)) {
 ```
 
 <h5>MainScreen -> Data -> Test -> Manipulate -> AddingVar</h5>
-######Must have applied GLM or Random Forest First AND variables must be applied in Train (Whoa there, what do you want to add variables too? Also are you sure you've done this for the Train data as well?)
 We've already given you the variables we brainstormed but try to do a few yourself. Just remember to add the variables to BOTH of the datasets! Here's the code for the Test data variables.
 ```R
 testData["Child"] <- NA
