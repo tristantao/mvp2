@@ -5,7 +5,7 @@ Double spaces delimits the content pasted per user typing enter
 
 Special Types:
 
-* start
+* ~~start~~ header
 * finish
 * code
 * explanation
