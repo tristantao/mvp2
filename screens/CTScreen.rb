@@ -10,7 +10,7 @@ class CTScreen < ActionScreen
     wiki_one = OpenStruct.new(:type => "header",
         :content => "Classification Trees is a popular predictive modeling approach in machine learning and data mining because of its simplicity. It is also easy to visualize the result and express the decisions made.",
         :description => "This Wiki teaches you more details about Classification Trees",
-        :action_badge => "DTScreenBadge_Wiki"
+        :action_badge => "CTScreenBadge_Wiki"
         )
     wiki_two = OpenStruct.new(:type => "explanation",
         :content => "The biggest advantage of classification trees is that there is very little preparation that\nmust be done to the data. Other techniques require categorical variables to be converted\nand missing values inferenced. Classification trees are also effective on large data sets. "
@@ -59,7 +59,7 @@ class CTScreen < ActionScreen
     apply_one = OpenStruct.new(:type => "header",
         :content => "Applying models is quite easy with built in functions and packages you can download that other users have created. Lets first install some packages here:",
         :description => "This Wiki walks you through fitting a classification tree model to your dataset",
-        :action_badge => "DTScreenBadge_Apply",
+        :action_badge => "CTScreenBadge_Apply",
         :requirement => ["trainViewDataScreen_View", "trainVizDataScreenBadge_Viz",
                           "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
         :lock_description => "[LOCKED]", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
@@ -128,7 +128,7 @@ class CTScreen < ActionScreen
   end
 
   def visit_badge
-    return "DTScreenBadge"
+    return "CTScreenBadge"
   end
 
 end

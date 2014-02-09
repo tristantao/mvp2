@@ -32,9 +32,9 @@ variables which strengthen the predictability of our models."
         :content => "We've already given you the variables we brainstormed but try to do a few yourself. Just remember to add the variables to BOTH of the datasets!\nHere's the code for the Test data variables.",
         :description => "This is where you bolster your model with new variables applied to your Test data!",
         :action_badge => "testManipDataScreenBadge_AddVar",
-        :requirement => ["GLMScreenBadge_Apply", "DTScreenBadge_Apply", "trainManipDataScreenBadge_AddVar"], #This is the list of badges that you need to enter this payload.
-        :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model, and add var to train data", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
-        :lock_warn => "You can't visit this until you build a simple GLM model and a simple Decision Tree Model and add var to train data" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
+        :requirement => ["GLMScreenBadge_Apply", "CTScreenBadge_Apply", "trainManipDataScreenBadge_AddVar"], #This is the list of badges that you need to enter this payload.
+        :lock_description => "[LOCKED] First build a simple GLM model and a simple Classification Tree Model, and add var to train data", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
+        :lock_warn => "You can't visit this until you build a simple GLM model and a simple Classification Tree Model and add var to train data" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
         )
         add_var_two = OpenStruct.new(:type => "code",
         :content => "testData[\"Child\"] <- NA\nfor (i in 1:nrow(testData)) {\nif (testData[i, 4] <= 12) {\n    testData[i, 7] <- 1\n  } else {\n    testData[i, 7] <- 2\n  }\n}\ntestData[\"Family\"] <- NA\nfor(i in 1:nrow(testData)) {\n  testData[i, 8] <- testData[i, 5] + testData[i, 6] + 1\n}\ntestData[\"Mother\"] <- NA\nfor(i in 1:nrow(testData)) {\n  if(testData[i, 2] == \"Mrs\" & testData[i, 6] > 0) {\n    testData[i, 9] <- 1\n  } else {\n    testData[i, 9] <- 2\n  }\n}\n"

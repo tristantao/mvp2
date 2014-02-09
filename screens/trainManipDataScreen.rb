@@ -15,34 +15,37 @@ variables which strengthen the predictability of our models."
     clean_one = OpenStruct.new(:type => "header",
     		:content => "To clean the Train data we will first make inferences on any missing values in the dataset.
 If you enter the following: trainData$Age you will see that there are
-a lot of NA's meaning the age variable is missing for these observations.
-\n What we will do is simply calculate the average age of all of the passengers
-and use that as a proxy for any missing age variable for an observation!
-Then we will write a loop which checks through the Train dataset if the age value is missing,
-and if it is substitute the proxy value.",
+a lot of NA's meaning the age variable is missing for these observations.",
     		:description => "Clean your training data!",
         :action_badge => "trainManipDataScreenBadge_Manip",
         :requirement => ["trainViewDataScreenBadge_View", "trainVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
         :lock_description => "[LOCKED] First view and vizualize the train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "Must have viewed & visualized data (Whoa there, have you viewed and visualized the data yet?)") #Actual message that plays when trying to enter a locked screen "You need to clean your data!
-    clean_two = OpenStruct.new(:type => "code",
+
+    clean_two = OpenStruct.new(:type => "explanation",
+        :content => "What we will do is simply calculate the average age of all of the passengers
+and use that as a proxy for any missing age variable for an observation!
+Then we will write a loop which checks through the Train dataset if the age value is missing,
+and if it is substitute the proxy value.")
+
+    clean_three = OpenStruct.new(:type => "code",
       :content => "mean_age <- mean(trainData$Age,na.rm=T)
 for (i in 1:nrow(trainData)) {
   if (is.na(trainData[i,5])) {
     trainData$Age[i] <- mean_age
   }
 }")
-    clean_three = OpenStruct.new(:type => "explanation",
+    clean_four = OpenStruct.new(:type => "explanation",
       :content => "We also want to turn the Sex variable (male/female) into a dummy variable (0/1)
 so that it can be used in our model and get rid of the columns of the dataset we don't use for our analysis.")
-    clean_four = OpenStruct.new(:type => "code",
+    clean_five = OpenStruct.new(:type => "code",
       :content => "trainData$Sex <- gsub(\"female\", 1, trainData$Sex)
 trainData$Sex <- gsub(\"^male\", 0, trainData$Sex)
 trainData <- trainData[-c(1,9:12)]")
-    clean_five = OpenStruct.new(:type => "finish",
+    clean_six = OpenStruct.new(:type => "finish",
       :content => "Now our Train dataset is clean! Go forth and do analysis")
 
-    @payload_hash['clean'] = [clean_one, clean_two, clean_three, clean_four, clean_five]
+    @payload_hash['clean'] = [clean_one, clean_two, clean_three, clean_four, clean_five, clean_six]
 
     add_var_one  = OpenStruct.new(:type => "header",
         :content => "By creating new variables we may be able to predict the survival of the passengers even more closely.
@@ -50,8 +53,8 @@ This tutorial specifically includes three variables which we found improved our 
 But you can probably brainstorm better ones if you wanted.",
         :description => "Add new variables to your training data!",
         :action_badge => "trainManipDataScreenBadge_AddVar",
-        :requirement => ["GLMScreenBadge_Apply", "DTScreenBadge_Apply"], #This is the list of badges that you need to enter this payload.
-        :lock_description => "[LOCKED] First build a simple GLM model and a simple Decision Tree Model in Tool.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
+        :requirement => ["GLMScreenBadge_Apply", "CTScreenBadge_Apply"], #This is the list of badges that you need to enter this payload.
+        :lock_description => "[LOCKED] First build a simple GLM model and a simple Classification Tree Model in Tool.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "Must have applied GLM or Random Forest first AND variables added to Test! (Whoa there, you want to add variables to what?)") #Actual message that plays when trying to enter a locked screen "You need to clean your data!
     add_var_two = OpenStruct.new(:type => "explanation",
       :content => "This additional variable choice stems from the fact that we suspect that being

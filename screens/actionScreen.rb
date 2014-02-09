@@ -119,11 +119,17 @@ class ActionScreen < Screen
         for load in current_load
             end_index -= 1
             if load.type == "explanation"
-                puts "\n" + load.content.light_blue
+                puts "\n" + load.content.cyan
             elsif load.type == "code"
-                puts "\n" + load.content.yellow
-            else
                 puts "\n" + load.content.green
+            elsif load.type == "reinforce"
+                puts "\n" + load.content.red
+            elsif load.type == "finish"
+                puts "\n" + load.content.cyan
+            elsif load.type == "header"
+                puts "\n" + load.content.cyan
+            else
+                raise "unrecognized payload type"
             end
             sleep(0.75)
             if end_index != 0
