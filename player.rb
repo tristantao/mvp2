@@ -31,7 +31,6 @@ class Player
       @action_badges << result_badge
     end
     #byebug
-    byebug
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
       @screen_stack.pop #TRISTAN: I am confused why this works. Isn't this popping twice?
       @KEY_TO_SCREEN['back'] = @screen_stack.pop

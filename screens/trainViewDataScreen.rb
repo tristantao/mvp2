@@ -15,10 +15,13 @@ class TrainViewDataScreen < ActionScreen
        #Finish the Data Screen actions!"
 
     view_two = OpenStruct.new(:type => "code",
-      :content => "edit(trainData)")
+      :content => "Taking a brief look at the data first is always a good move to get yourself familiarized.
+The first thing we want to do is put the datasets you downloaded from Kaggle into RStudio! Write the following
+code to \"read in\" your data into RStudio:")
 
-    view_three = OpenStruct.new(:type => "explanation",
-      :content => "\nFUCK YOUR COUCH")
+    view_three = OpenStruct.new(:type => "code",
+      :content => "trainData <- read.csv(\"train.csv\", header = TRUE, stringsAsFactors = FALSE)
+testData <- read.csv(\"test.csv\", header = TRUE, stringsAsFactors = FALSE)")
 
     view_four = OpenStruct.new(:type => "explanation",
       :content => "\nblah blah blah blah blah")
