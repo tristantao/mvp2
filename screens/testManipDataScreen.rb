@@ -5,6 +5,10 @@ class TestManipDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
         @display_description = "Manipulate the testing data"
+    @description = "Here's where we get our hands dirty.
+Cleaning the data involves making inferences on any missing values as well as converting
+the categorical variables to dummary variables. Adding variables involves creating additional
+variables which strengthen the predictability of our models."
 
 		view_one = OpenStruct.new(:type => "header",
     		:content => "Same deal as with the Train data. We remove columns we don't use in\nour analysis, make inferences on the missing age values, and create dummy variables\nfor the Sex column",

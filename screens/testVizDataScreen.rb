@@ -5,6 +5,7 @@ class TestVizDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
         @display_description = "Vizualize the testing data"
+        @description = "Doing visualizations of the data allow you understand it better before you begin any analysis. Which plot should you do first?"
 
 		view_one = OpenStruct.new(:type => "explanation",
     		:content => "We will also teach you how to make another visualization, the pie chart.",

@@ -4,7 +4,9 @@ require_relative "actionScreen"
 class CTScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "Choose to learn the theory and concepts or if your already familiar you can apply it to our data project."
+    @description = "You chose to apply logistic regression.
+You can learn more about the theory and concepts and/or you can simply straight apply it to our data project."
+
     @payload_hash = Hash.new
     @display_description = "Learn and build a Classification Tree Model here"
     wiki_one = OpenStruct.new(:type => "header",

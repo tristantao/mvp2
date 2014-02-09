@@ -6,6 +6,7 @@ class TrainViewDataScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
     @display_description = "View the training data"
+    @description = "This is where you'll load the data, and get your first glimpse."
     @payload_hash = Hash.new
     view_one  = OpenStruct.new(:type => "header",
       :content => "Here, you learn how to inspect the data. In R,  we utilize the following function to achieve that goal:",

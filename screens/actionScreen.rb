@@ -23,9 +23,9 @@ class ActionScreen < Screen
         #return self, [false|visit_badge]
         while true
             print_double_break
-            puts @description
+            puts "You're currently in the \"%s\"" % @name
             print_single_break
-            puts "You're currently in the \"%s\", Choose You're options from below" % @name
+            puts @description
             print_options(player)
             raw_player_option = gets.chomp
             raw_player_option.strip!
