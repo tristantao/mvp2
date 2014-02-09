@@ -5,8 +5,9 @@ require_relative "actionScreen"
 class GLMScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
-    @description = "You chose to learn logistic regression.
+    @description = "You chose to apply logistic regression.
 You can learn more about the theory and concepts and/or you can simply straight apply it to our data project."
+
     @display_description = "Learn and build a Generalized Linear Model here"
 
     @payload_hash = Hash.new

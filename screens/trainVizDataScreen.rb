@@ -6,7 +6,7 @@ class TrainVizDataScreen < ActionScreen
     super(reachable_target, name, points)
     @payload_hash = Hash.new
 
-    @description = "Doing visualizations of the data allow you understand it better before you begin any analysis. Which one should you do first?"
+    @description = "Doing visualizations of the data allow you understand it better before you begin any analysis. Which plot should you do first?"
     @display_description = "Vizualize the training data"
 
     dp_one = OpenStruct.new(:type => "header",

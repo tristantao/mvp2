@@ -5,6 +5,7 @@ class TestViewDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
         @display_description = "View the testing data"
+        @description = "See additional functions you can use in RStudio to view your data."
 
     	view_one = OpenStruct.new(:type => "explanation",
     		:content => "Here are some additional functions you can use to view data in R:",
