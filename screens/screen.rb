@@ -3,17 +3,19 @@ require 'set'
 require 'colorize'
 
 class Screen
-    attr_accessor :name
+    attr_accessor :name, :display_description
 	@reachable_target = nil
     @name = "Screen"
     @points = 0
     @description = nil
+    @display_description =nil
 
     def initialize(reachable_target, name, points)
         @reachable_target = Set.new(reachable_target)
         @name = name
         @points = points
         @description = "Don't forget to overwrite @description!"
+        @display_description = "Don't forget to overwrite @display_description!"
     end
 
     def enter_screen_action
@@ -76,9 +78,10 @@ class Screen
 
     def print_options
         print_single_break
+        #byebug
         puts "back => Go back one screen"
         puts "main => Go back to main screen"
-        self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
+        self.options.each_with_index {|val, index| puts "#{index} => %s " % val.display_description }
         print "Your Input: ".magenta
     end
 

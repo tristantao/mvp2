@@ -5,6 +5,8 @@ class TrainManipDataScreen < ActionScreen
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
     @payload_hash = Hash.new
+    @display_description = "Manipulate the training data"
+
     @description = "Here's where we get our hands dirty.
 Cleaning the data involves making inferences on any missing values as well as converting
 the categorical variables to dummary variables. Adding variables involves creating additional

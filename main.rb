@@ -31,11 +31,8 @@ dt_screen = DTScreen.new([], "DT Screen", 0)
 
 tools_screen = ToolsScreen.new([dt_screen, glm_screen], "Tools Screen", 0) #TODO Update Tools screen
 
-models_screen = ModelsScreen.new([], "Models Screen", 0)
-
-
 #MainScreen Node
-main_screen = MainScreen.new([data_screen, models_screen, tools_screen], "Main Screen", 0)
+main_screen = MainScreen.new([data_screen, tools_screen], "Main Screen", 0)
 
 
 main_player = Player.new(main_screen)

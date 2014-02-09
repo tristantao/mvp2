@@ -4,12 +4,14 @@ require_relative "actionScreen"
 class TestVizDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
+        @display_description = "Vizualize the testing data"
+
 		view_one = OpenStruct.new(:type => "explanation",
     		:content => "We will also teach you how to make another visualization, the pie chart.",
     		:description => "Make a piechart visualization here",
             :action_badge => "testVizDataScreenBadge_Viz",
             :requirement => ["trainVizDataScreenBadge_Viz"],
-            :lock_description => "[LOCKED] First visualize the Train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+            :lock_description => "[LOCKED] First visualize the Train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
             :lock_warn => "Must have visualized the Train data first" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
             )
     	view_two = OpenStruct.new(:type => "code",
@@ -26,7 +28,7 @@ class TestVizDataScreen < ActionScreen
     		:description => "Make a density visualization here",
             :action_badge => "testVizDataScreenBadge_Viz",
             :requirement => ["trainVizDataScreenBadge_Viz"],
-            :lock_description => "[LOCKED] First visualize the Train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+            :lock_description => "[LOCKED] First visualize the Train data.", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
             :lock_warn => "Must have visualized the Train data first"
             )
     	view_two_density = OpenStruct.new(:type => "code",

@@ -4,6 +4,8 @@ require_relative "actionScreen"
 class TestViewDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
+        @display_description = "View the testing data"
+
     	view_one = OpenStruct.new(:type => "explanation",
     		:content => "Here are some additional functions you can use to view data in R:",
     		:description => "This is where you view and explore the data!",

@@ -6,6 +6,7 @@ class DTScreen < ActionScreen
     super(reachable_target, name, points)
     @description = "Choose to learn the theory and concepts or if your already familiar you can apply it to our data project."
     @payload_hash = Hash.new
+    @display_description = "Learn and build a Classification Tree Model here"
     wiki_one = OpenStruct.new(:type => "header",
         :content => "Classification Trees is a popular predictive modeling approach in machine learning and data mining because of its simplicity. It is also easy to visualize the result and express the decisions made.",
         :description => "This Wiki teaches you more details about Classification Trees",
@@ -61,7 +62,7 @@ class DTScreen < ActionScreen
         :action_badge => "DTScreenBadge_Apply",
         :requirement => ["trainViewDataScreen_View", "trainVizDataScreenBadge_Viz",
                           "testViewDataScreenBadge_View", "testVizDataScreenBadge_Viz"], #This is the list of badges that you need to enter this payload.
-        :lock_description => "[LOCKED]", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data! 
+        :lock_description => "[LOCKED]", #The lock screen view, e.g.: [LOCKED] You have to complete cleaning your data!
         :lock_warn => "You must first view and visualize both data sets!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
     apply_two = OpenStruct.new(:type => "code",
