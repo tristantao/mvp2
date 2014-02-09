@@ -371,6 +371,8 @@ colnames(kaggle_tree_sub) <- c("PassengerId", "Survived")
 write.csv(kaggle_tree_sub, file = "kaggle_tree.csv", row.names = FALSE)
 ```
 A file titled "kaggle_tree" should now be in the same folder which you saved the original Test and Train datasets. Use this file to make a submission on the Kaggle website and see where you rank!
+<br>
+<br>
 Note: Make sure the CSV you submit has only two columns: one labeled as “PassengerID” and another labeled as “Survived”.
 
 <h5>MainScreen -> Tools -> Glm</h5>
