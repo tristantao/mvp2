@@ -9,8 +9,8 @@ class TrainVizDataScreen < ActionScreen
 
     dp_one = view_one = OpenStruct.new(:type => "header",
     		:content => "By first plotting the density we're able to get a sense of how the overall 
-data feel and get a few vague answers: 
-where is the general center? 
+data feel and get a few vague answers:
+where is the general center?
 Is there a skew?
 Does is generally take higher values?
 Where are most of the values concentrated?",
