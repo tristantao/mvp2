@@ -1,6 +1,6 @@
 require_relative "screen"
 
-class MainScreen < Screen
+class MainScreen < ActionScreen
 
   def initialize(reachable_target, name, points)
     super(reachable_target, name, points)
@@ -25,7 +25,7 @@ class MainScreen < Screen
     part_six = OpenStruct.new(:type => "finish",
     	:content => "Just to let you know this tutorial involves lots of exploring and requires you to do certain parts before\nothers! We wanted to replicate the role of a data analyst as closely as possible. Have fun and Happy Exploring!"
     	)
-    @payload_hash['readme'] = [part_one, part_two, part_three, part_four, part_five, part_six]
+    @payload_hash['intro'] = [part_one, part_two, part_three, part_four, part_five, part_six]
   end
   def visit_badge
     return "mainScreenBadge"
