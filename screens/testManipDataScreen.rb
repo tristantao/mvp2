@@ -4,7 +4,7 @@ require_relative "actionScreen"
 class TestManipDataScreen < ActionScreen
 	def initialize(reachable_target, name, points)
 		super(reachable_target, name, points)
-		view_one = OpenStruct.new(:type => "explanation",
+		view_one = OpenStruct.new(:type => "header",
     		:content => "Same deal as with the Train data. We remove columns we don't use in\nour analysis, make inferences on the missing age values, and create dummy variables\nfor the Sex column",
     		:description => "Manipulate your data here",
         :action_badge => "testManipDataScreenBadge_Manip",
@@ -16,10 +16,13 @@ class TestManipDataScreen < ActionScreen
     	view_two = OpenStruct.new(:type => "explanation",
     		:content => "testData <- testData[-c(1, 8:11)]\ntestData$Sex <- gsub(\"female\", 1, testData$Sex)\ntestData$Sex <- gsub(\"^male\", 0, testData$Sex)\ntest_mean_age <- mean(testData$Age, na.rm= T)\nfor (i in 1:nrow(testData)) {\nif (is.na(testData[i,4])) {\ntestData[i, 4] <- test_mean_age\n  }\n}"
             )
+        view_three = OpenStruct.new(:type => "finish",
+        :content => "All done."
+        )
     	@payload_hash = Hash.new
-    	@payload_hash['cleaning'] = [view_one, view_two]
+    	@payload_hash['cleaning'] = [view_one, view_two, view_three]
 
-        add_var_one  = OpenStruct.new(:type => "explanation",
+        add_var_one  = OpenStruct.new(:type => "header",
         :content => "We've already given you the variables we brainstormed but try to do a few yourself. Just remember to add the variables to BOTH of the datasets!\nHere's the code for the Test data variables.",
         :description => "This is where you bolster your model with new variables applied to your Test data!",
         :action_badge => "testManipDataScreenBadge_AddVar",
@@ -30,7 +33,10 @@ class TestManipDataScreen < ActionScreen
         add_var_two = OpenStruct.new(:type => "code",
         :content => "testData[\"Child\"] <- NA\nfor (i in 1:nrow(testData)) {\nif (testData[i, 4] <= 12) {\n    testData[i, 7] <- 1\n  } else {\n    testData[i, 7] <- 2\n  }\n}\ntestData[\"Family\"] <- NA\nfor(i in 1:nrow(testData)) {\n  testData[i, 8] <- testData[i, 5] + testData[i, 6] + 1\n}\ntestData[\"Mother\"] <- NA\nfor(i in 1:nrow(testData)) {\n  if(testData[i, 2] == \"Mrs\" & testData[i, 6] > 0) {\n    testData[i, 9] <- 1\n  } else {\n    testData[i, 9] <- 2\n  }\n}\n"
         )
-  @payload_hash['adding_variables'] = [add_var_one, add_var_two]
+        add_var_three = OpenStruct.new(:type => "finish",
+        :content => "All done."
+        )
+  @payload_hash['adding_variables'] = [add_var_one, add_var_two, add_var_three]
 	end
 
 	def visit_badge
