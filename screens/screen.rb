@@ -48,7 +48,7 @@ class Screen
         #also returns false as second var, which is indicating that no action badge was awarded.
       while true
         print_double_break
-        puts "You're current in the \"%s\", and here are your options, please choose the desired index" % @name
+        puts "You're currently in the \"%s\", and here are your options, please choose the desired index" % @name
         print_single_break
         puts @description
         self.print_options
