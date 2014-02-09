@@ -13,6 +13,7 @@ class Screen
         @reachable_target = Set.new(reachable_target)
         @name = name
         @points = points
+        @description = "Don't forget to overwrite @description!"
     end
 
     def enter_screen_action
@@ -47,7 +48,7 @@ class Screen
         #also returns false as second var, which is indicating that no action badge was awarded.
       while true
         print_double_break
-        puts "\nYou're current in the \"%s\", and here are your options, please choose the desired index" % @name
+        puts "You're current in the \"%s\", and here are your options, please choose the desired index" % @name
         print_single_break
         puts @description
         self.print_options
@@ -75,7 +76,6 @@ class Screen
 
     def print_options
         print_single_break
-        print "\n"
         puts "back => Go back one screen"
         puts "main => Go back to main screen"
         self.options.each_with_index {|val, index| puts "#{index} => %s " % val.name }
@@ -87,13 +87,13 @@ class Screen
     end
 
     def print_double_break
-        print "=".yellow * 30
+        puts "=".yellow * 30
     end
     def print_single_break
-        print "-".yellow * 30
+        puts "-".yellow * 30
     end
     def print_plus_break
-        print "+".yellow * 25
+        puts "+".yellow * 25
     end
 
     def visit_badge

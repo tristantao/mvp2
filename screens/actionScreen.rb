@@ -2,7 +2,7 @@ require_relative "screen"
 require 'ostruct'
 class ActionScreen < Screen
 
-	@action_methods = nil
+    @action_methods = nil
     @payload_hash = {}
     @payload_switch = false
     def initialize(reachable_target, name, points)
@@ -15,7 +15,7 @@ class ActionScreen < Screen
     end
 
     def visit_badge
-    	raise "actionScreenBadge missing"
+        raise "actionScreenBadge missing"
     end
 
     def query_action (player)
@@ -23,7 +23,9 @@ class ActionScreen < Screen
         #return self, [false|visit_badge]
         while true
             print_double_break
-            puts "\nYou're currently in the \"%s\", Choose You're options from below" % @name
+            puts @description
+            print_single_break
+            puts "You're currently in the \"%s\", Choose You're options from below" % @name
             self.print_options(player)
             raw_player_option = gets.chomp
             raw_player_option.strip!
@@ -61,7 +63,6 @@ class ActionScreen < Screen
 
     def print_options (player)
         print_single_break
-        print "\n"
         puts "back => Go back one screen"
         puts "main => Go back to main screen"
         @payload_hash.each do |key, val| #check to see if the player has the certain badge
@@ -90,10 +91,10 @@ class ActionScreen < Screen
         sleep (rand/2)
         print ".".yellow
         sleep (0.75)
-        print "complete!".green
+        print "complete!\n".green
         sleep(rand*1.5)
         print_plus_break
-        print "\n\n"
+        print "\n"
         payload_action_complete = self.payload(load_key)
         print "\n"
         print_plus_break
@@ -115,9 +116,11 @@ class ActionScreen < Screen
         #returns the corresponding action badge if completed
         for load in @payload_hash[load_key]
             if load.type == "explanation"
-                puts load.content.light_blue
+                puts "\n" + load.content.light_blue
             elsif load.type == "code"
-                puts load.content.yellow
+                puts "\n" + load.content.yellow
+            else
+                puts "\n" + load.content.green
             end
             sleep(0.75)
             print "\n->Press Enter to continue or type \"home\" to go back to the screen you began: ".red
