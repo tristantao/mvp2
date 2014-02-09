@@ -25,14 +25,16 @@ class Player
   end
 
   def do
-    @screen_stack.push(@current_screen)
+    if @current_screen != @screen_stack[-1]
+      @screen_stack.push(@current_screen)
+    end
     new_screen, result_badge = @current_screen.query_action(self)
     if result_badge #Successfully finished a payload
       @action_badges << result_badge
     end
     #byebug
     if @KEY_TO_SCREEN.key?(new_screen) #Special screen jump
-      @screen_stack.pop #TRISTAN: I am confused why this works. Isn't this popping twice?
+      @screen_stack.pop
       @KEY_TO_SCREEN['back'] = @screen_stack.pop
       @current_screen = @KEY_TO_SCREEN[new_screen]
     else #regular screen jump
