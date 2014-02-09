@@ -308,19 +308,28 @@ install.packages("rpart.plot")
 library(rpart)
 library(rpart.plot)
 ```
-With classification trees, as we previously said, no cleaning of the data needs to be initially done. We can right now take any of the attributes in trainData (the columns) and use them to predict survival. Lets build our first model by just picking some variables and then plotting them for easier understanding.
+With classification trees, as we previously said, no cleaning of the data needs to be initially done. We can right now take any of the attributes in trainData (the columns) and use them to predict survival.
+<br>
+<br>
+Lets build our first model by just picking some variables and then plotting them for easier understanding.
 
 ```R
 first_rpart <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data = trainData, method = "class")
 rpart.plot(first_rpart)
 ```
-As you can see from the plot on the bottom right quadrant of RStudio, at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. To see the predictions our model "first_rpart" makes for the survival of each observation in the Train dataset, we use the predict() function in RStudio.
+As you can see from the plot on the bottom right quadrant of RStudio, at each node there is an attribute which splits the data in two. Then at the terminal nodes is a value for survival. 
+<br>
+<br>
+To see the predictions our model "first_rpart" makes for the survival of each observation in the Train dataset, we use the predict() function in RStudio.
 
 ```R
 train_pred <- predict(first.rpart,trainData,type="class")
 train_pred
 ```
-Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset. We do this by calculating four numbers: (1) the number of observations we correctly predicted as survived (2) the number of observations we correctly predicted as died (3) the number of observations we predicted survived and in reality died (4) the number of observations we predicted died and in reality survived.
+Now that we have predictions for survival using our model on the Train data we can compare our predictions with the actual survival observations that are given for the Train dataset.
+<br>
+<br>
+We do this by calculating four numbers: (1) the number of observations we correctly predicted as survived (2) the number of observations we correctly predicted as died (3) the number of observations we predicted survived and in reality died (4) the number of observations we predicted died and in reality survived.
 <br>
 <br>
 To do this we create a custom function called ErrorMatrix. Its a little bit complicated so go ahead and just copy and paste it into your Rscript.
@@ -342,10 +351,16 @@ ErrorMatrix <- function (y, yhat)
 }
 ErrorMatrix(as.integer(trainData$Survived), train_pred)
 ```
-In our matrix the x-axis represents our predictions and the y-axis represents the actual survival observation. From the matrix you can see that the top left quadrant represents the number of observations we correctly predicted as died, the top right quadrant is the number of observations we incorrectly predicted as survived, and so on.
+In our matrix the x-axis represents our predictions and the y-axis represents the actual survival observation.
 <br>
 <br>
-What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors. You can think of these similarly to Type I and Type II errors if you'd like though they are not exactly the same.
+From the matrix you can see that the top left quadrant represents the number of observations we correctly predicted as died, the top right quadrant is the number of observations we incorrectly predicted as survived, and so on.
+<br>
+<br>
+What this matrix shows is that when evaluating your models you want to minimize the values for the bottom left and top right quadrants respectively as these represent your errors. 
+<br>
+<br>
+You can think of these similarly to Type I and Type II errors if you'd like though they are not exactly the same.
 <br>
 <br>
 Going back to our model lets now make predictions on our Test dataset for submission to Kaggle!
