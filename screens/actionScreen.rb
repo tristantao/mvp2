@@ -94,7 +94,6 @@ class ActionScreen < Screen
         print "complete!\n".green
         sleep(rand*1.5)
         print_plus_break
-        print "\n"
         payload_action_complete = self.payload(load_key)
         print "\n"
         print_plus_break
@@ -114,7 +113,10 @@ class ActionScreen < Screen
     def payload(load_key)
         #returns false if the lesson wasn't completed
         #returns the corresponding action badge if completed
-        for load in @payload_hash[load_key]
+        current_load = @payload_hash[load_key]
+        end_index = current_load.length
+        for load in current_load
+            end_index -= 1
             if load.type == "explanation"
                 puts "\n" + load.content.light_blue
             elsif load.type == "code"
@@ -123,7 +125,12 @@ class ActionScreen < Screen
                 puts "\n" + load.content.green
             end
             sleep(0.75)
-            print "\n->Press Enter to continue or type \"home\" to go back to the screen you began: ".red
+            if end_index != 0
+                print "\n->Press Enter to continue or type \"home\" to go back to the screen you began: ".red
+            else
+                puts "You're now done with this section!".magenta
+                break
+            end
             user_input = gets.chomp
             user_input.strip!
             if user_input == "home"
