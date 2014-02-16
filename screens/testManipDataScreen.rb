@@ -19,7 +19,7 @@ variables which strengthen the predictability of our models."
         :lock_warn => "You can't visit this until you view and vizualize the Train data!" #Actual message that plays when trying to enter a locked screen "You need to clean your data!
       )
 
-    	view_two = OpenStruct.new(:type => "explanation",
+    	view_two = OpenStruct.new(:type => "code",
     		:content => "testData <- testData[-c(1, 8:11)]\ntestData$Sex <- gsub(\"female\", 1, testData$Sex)\ntestData$Sex <- gsub(\"^male\", 0, testData$Sex)\ntest_mean_age <- mean(testData$Age, na.rm= T)\nfor (i in 1:nrow(testData)) {\nif (is.na(testData[i,4])) {\ntestData[i, 4] <- test_mean_age\n  }\n}"
             )
         view_three = OpenStruct.new(:type => "finish",
