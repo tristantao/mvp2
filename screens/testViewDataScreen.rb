@@ -19,7 +19,7 @@ class TestViewDataScreen < ActionScreen
     		:content => "tail(testData, 10)\nhead(testData, 10)\ntestData")
 
         view_three = OpenStruct.new(:type => "explanation",
-            :content => "Like Unix command, head() and tail() each prints a number of specified lines (10 here)
+            :content => "Like the Unix commands, head() and tail() each prints a number of specified lines (10 here)
 from either the start (head) or the finish (tail) of the data object.
 Simply writing the data object name prints the whole thing.")
     	@payload_hash = Hash.new

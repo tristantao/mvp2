@@ -61,12 +61,20 @@ main = \"survived and deceased between male and female\")
 Pclass_survival[2] / (Pclass_survival[1] + Pclass_survival[2])
 Pclass_survival[4] / (Pclass_survival[3] + Pclass_survival[4])
 Pclass_survival[6] / (Pclass_survival[5] + Pclass_survival[6])")
-    bp_six = OpenStruct.new(:type => "finish",
+    bp_six = OpenStruct.new(:type => "reinforce",
+      :content => "We generally want to vizualize the data before we clean them, so we have an understanding of
+what the underlying data looks like. Knowing the data we're working with, lets us clean it
+in a more meaningful ways, answering some of the following questions:
+Can I/Should I remove outliers?
+Is the dataset complete?
+What variables are already there, and whatelse might I add?")
+
+    bp_seven = OpenStruct.new(:type => "finish",
       :content => "Thats some decent visualizations for now.
 Think about what else you might want to visualize?
 The key idea is that we're trying to determine if any/which of our variables are related to what we're trying to predict: Survived.")
 
-      @payload_hash['bar_plot'] = [bp_one, bp_two, bp_three, bp_four, bp_five, bp_six]
+      @payload_hash['bar_plot'] = [bp_one, bp_two, bp_three, bp_four, bp_five, bp_six, bp_seven]
 
   end
 

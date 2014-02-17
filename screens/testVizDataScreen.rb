@@ -35,7 +35,7 @@ class TestVizDataScreen < ActionScreen
     	view_two_density = OpenStruct.new(:type => "code",
     		:content => "plot(density(testData$Age, na.rm = TRUE), main =\"Test Data$Age Density\")\nplot(density(testData$Fare,na.rm = T), main = \"Test Data$Fare Density\", xlab=\"$Dollars\"")
         view_three_density = OpenStruct.new(:type => "explanation",
-            :content => "Again here you want to verify tha the distribution of your Test data is similar to your Train data\nso that the model applies.verything should look good!")
+            :content => "Again here you want to verify tha the distribution of your Test data is similar to your Train data\nso that the model applies. Everything looks good!")
     	@payload_hash['density'] = [view_one_density, view_two_density, view_three_density]
 
 	end
