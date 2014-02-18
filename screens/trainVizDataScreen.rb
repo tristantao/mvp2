@@ -44,24 +44,24 @@ We also calculate the male/female survival rates from the table by indexing the 
       )
     bp_two = OpenStruct.new(:type => "code",
       :content => "counts <- table(trainData$Survived, trainData$Sex)
-barplot(counts, xlab = \"Gender\", ylab = \"Number of People\", main = \"survived and deceased between male and female\")
+barplot(counts, xlab = \"Gender\", ylab = \"Number of People\", main = \"Survival by Gender\")
 counts[2] / (counts[1] + counts[2])
 counts[4] / (counts[3] + counts[4])")
     bp_three = OpenStruct.new(:type => "explanation",
       :content => "Note that in the barplot you create the lighter areas indicate survival.
 Doing the calculations below the barplot we see that in our Train data, 74.2% of women survived versus 18.9% of men.")
     bp_four = OpenStruct.new(:type => "explanation",
-      :content => "Lets now look at the survival rate filtered by passenger class.
+      :content => "Lets now look at the survival rate filtered by passenger class. To go back to the previous plot simply re-run the code we provided.
 It seems like the Pclass column might also be informative in survival prediction as the survival rate of the 1st class,
 2nd class, and 3rd class are: 63.0%, 47.3%, and 24.2% respectively. ")
     bp_five = OpenStruct.new(:type => "code",
       :content => "Pclass_survival <- table(trainData$Survived, trainData$Pclass)
 barplot(Pclass_survival, xlab = \"Cabin Class\", ylab = \"Number of People\",
-main = \"survived and deceased between male and female\")
+main = \"Survival by Class\")
 Pclass_survival[2] / (Pclass_survival[1] + Pclass_survival[2])
 Pclass_survival[4] / (Pclass_survival[3] + Pclass_survival[4])
 Pclass_survival[6] / (Pclass_survival[5] + Pclass_survival[6])")
-    bp_six = OpenStruct.new(:type => "reinforce",
+    bp_six = OpenStruct.new(:type => "explanation",
       :content => "We generally want to vizualize the data before we clean them, so we have an understanding of
 what the underlying data looks like. Knowing the data we're working with, lets us clean it
 in a more meaningful ways, answering some of the following questions:
