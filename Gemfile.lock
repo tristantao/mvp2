@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (1.2.0)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
+    colorize (0.6.0)
+    columnize (0.3.6)
+    debugger-linecache (1.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  byebug (~> 1.2.0)
+  colorize (~> 0.6.0)
